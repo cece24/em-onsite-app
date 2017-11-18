@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+ *,
+ ::before,
+ ::after {
+   box-sizing: border-box;
+ }
+
+ body {
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+ }
