@@ -2,14 +2,10 @@ require "json"
 
 class PagesController < ApplicationController
   def index
-    get_headers = {
-      "X-API-Key": "b809f96a3b16f08f40cd0c59847c5497d2c31255c42ab11951d273a2d4cc6c51",
-      "Content-Type": "application/json"
-    }
     # base_uri "https://api.eventmobi.com/v2/events/10278f43-4e8b-44f9-94ee-35cdd4d7c6d3"
     # response = HTTParty.get('https://experience.eventmobi.com/organization/eventmobi-support/event/21555/companies')
     response = HTTParty.get("https://api.eventmobi.com/v2/events/10278f43-4e8b-44f9-94ee-35cdd4d7c6d3/sessions/resources",
-      :headers => get_headers
+      :headers => headers
       )
 
     if response.code == 200
@@ -51,6 +47,14 @@ class PagesController < ApplicationController
 
   def new
     #code
+  end
+
+  private
+
+  def headers
+    return { "X-API-Key": "b809f96a3b16f08f40cd0c59847c5497d2c31255c42ab11951d273a2d4cc6c51",
+      "Content-Type": "application/json"
+    }
   end
 
 end

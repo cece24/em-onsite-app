@@ -1,5 +1,7 @@
 <h1>EM Onsite App</h1>
 
+<%= link_to "Create a New Session", new_page_path %>
+
 <% @sessions.each do |session| %>
   <h3><%= session["name"]%></h3>
   <%= session["description"] %>
