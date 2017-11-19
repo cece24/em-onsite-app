@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   resources :pages
+
+  get '/access', to: "pages#access", as: "access"
 end

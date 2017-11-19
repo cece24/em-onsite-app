@@ -104,6 +104,23 @@ class PagesController < ApplicationController
 
   end
 
+  def access
+    response = HTTParty.get("https://core.eventmobi.com/cms/v1/organizations/d8fd5bf9-b3ce-4e1d-98a0-6dbbb03b4249/events/21555",
+      :headers => access_headers,
+      :debug_output => $stdout
+    )
+
+    if response.code == 200
+      response_data = JSON.parse(response.body)
+      @access_data = response_data
+    else
+      puts "Request error: #{response.code} #{response.message}"
+      json_response = JSON.parse(response.body)
+      puts "Bad request, parsed body"
+      puts json_response
+    end
+  end
+
 
   private
 
@@ -117,6 +134,12 @@ class PagesController < ApplicationController
     return { "X-API-Key" => "b809f96a3b16f08f40cd0c59847c5497d2c31255c42ab11951d273a2d4cc6c51",
       "Content-Type" => "application/json",
       "Accept" => "application/json"
+    }
+  end
+
+  def access_headers
+    return {
+      "Cookie" => "__cid=c5bca43a-f3b3-48c3-bd25-2b4a355ed990; mp_b36aa4f2a42867e23d8f9907ea741d91_mixpanel=%7B%22distinct_id%22%3A%20%22a77dd016-a032-b972-0e72-897689141d8a%22%2C%22%24initial_referrer%22%3A%20%22%24direct%22%2C%22%24initial_referring_domain%22%3A%20%22%24direct%22%7D; ajs_anonymous_id=%22bd7c1289-e287-4aa9-a493-f4135b6e5aa1%22; __zlcmid=hwgf1qjuZIiYTk; intercom-id-cajd64se=5547633b-8351-4587-9ede-360469848fe7; optimizelyEndUserId=oeu1507737128256r0.3683758097336749; _mkto_trk=id:872-NUQ-221&token:_mch-eventmobi.com-1498665681324-10795; _okdetect=%7B%22token%22%3A%2215110417259700%22%2C%22proto%22%3A%22https%3A%22%2C%22host%22%3A%22experience.eventmobi.com%22%7D; _okbk=cd4%3Dtrue%2Cvi5%3D0%2Cvi4%3D1511041726689%2Cvi3%3Dactive%2Cvi2%3Dfalse%2Cvi1%3Dfalse%2Ccd8%3Dchat%2Ccd6%3D0%2Ccd5%3Daway%2Ccd3%3Dfalse%2Ccd2%3D0%2Ccd1%3D0%2C; _ok=6780-466-10-3623; _okac=7ab6ac95a53855c0eaddd5729110ad43; _okla=1; ajs_user_id=1292088; ajs_group_id=null; _ga=GA1.2.1645581020.1496168230; _gid=GA1.2.475066752.1511041725; olfsk=olfsk32191169249502183; wcsid=rrkrjUOckydRrj2q303zk0U08K0JEt6b; hblid=moyA3AgYB2FcKfpV303zk0T8RE0PorAt; __utma=224322895.1645581020.1496168230.1511047217.1511058786.130; __utmb=224322895.4.10.1511058786; __utmc=224322895; __utmz=224322895.1504806461.123.65.utmcsr=manage.eventmobi.com|utmccn=(referral)|utmcmd=referral|utmcct=/en/admin/master_list/organiser_details/10243; eventmobicomamplitudeideventmobi.com=eyJkZXZpY2VJZCI6ImRhOTYzMTg2LWQ1ZTktNDk1YS04ZjRkLThlZjIzNzQ1MGMwM1IiLCJ1c2VySWQiOm51bGwsIm9wdE91dCI6ZmFsc2UsInNlc3Npb25JZCI6MTUxMTA3MDM0OTYwMywibGFzdEV2ZW50VGltZSI6MTUxMTA3MDQzMTI5OCwiZXZlbnRJZCI6MTQ5NSwiaWRlbnRpZnlJZCI6MCwic2VxdWVuY2VOdW1iZXIiOjE0OTV9; em-login-organizer=6c23f17761f87db759510b234360fb6c7cdbb92ff4f8ed6115fd498616844ecb; _oklv=1511071398888%2CrrkrjUOckydRrj2q303zk0U08K0JEt6b"
     }
   end
 

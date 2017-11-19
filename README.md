@@ -11,8 +11,9 @@ Using Open API
 * Delete sessions
 
 Using Internal API
-* Store cookie
-* Send as a header to an internal API endpoint
+* Store cookie - Done
+* Send as a header to an internal API endpoint - Done
 
 Questions
 * Sometimes requests take a LONG time
+* Connection Header??
