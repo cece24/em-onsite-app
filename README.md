@@ -1,24 +1,18 @@
-# README
+# EM Onsite App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+TO DO:
 
-Things you may want to cover:
+* Hide API key
+* Datetime Formatting
 
-* Ruby version
+Using Open API
+* Add sessions
+* Edit sessions
+* Delete sessions
 
-* System dependencies
+Using Internal API
+* Store cookie
+* Send as a header to an internal API endpoint
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Questions
+* Sometimes requests take a LONG time
