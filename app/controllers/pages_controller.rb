@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     # base_uri "https://api.eventmobi.com/v2/events/10278f43-4e8b-44f9-94ee-35cdd4d7c6d3"
     # response = HTTParty.get('https://experience.eventmobi.com/organization/eventmobi-support/event/21555/companies')
     response = HTTParty.get("https://api.eventmobi.com/v2/events/10278f43-4e8b-44f9-94ee-35cdd4d7c6d3/sessions/resources",
-      :headers => headers,
+      :headers => get_headers,
       :debug_output => $stdout
       )
 
@@ -48,12 +48,9 @@ class PagesController < ApplicationController
     # puts json_body.class
 
     response = HTTParty.post("https://api.eventmobi.com/v2/events/10278f43-4e8b-44f9-94ee-35cdd4d7c6d3/sessions/resources",
-      headers: { "X-API-Key" => "b809f96a3b16f08f40cd0c59847c5497d2c31255c42ab11951d273a2d4cc6c51",
-        "Content-Type" => "application/json",
-        "Accept" => "application/json"
-        },
+      :headers => post_headers,
       body: {
-          "id": "1445eb69c896aef",
+          "id": "1445eb96aef",
           "name": "Ninety-Nine Problems But This Post Request was 1000",
           "description": "<p>Changes in how we live, communicate, do business, move and interact are taking place at an ever-increasing pace. We face new challenges each day. Through best practices, your in-house API won'\''t be one of them. We show you how to transform to meet the need of users to facilitate rapid change by re-imagining processes and requirements and adopting new technologies. Harnessing a need for change as an opportunity to positively shift the way we design, shape internal    environments.</p>",
           "location": "Great Hall",
@@ -84,9 +81,16 @@ class PagesController < ApplicationController
 
   private
 
-  def headers
+  def get_headers
     return { "X-API-Key" => "b809f96a3b16f08f40cd0c59847c5497d2c31255c42ab11951d273a2d4cc6c51",
       "Content-Type" => "application/json"
+    }
+  end
+
+  def post_headers
+    return { "X-API-Key" => "b809f96a3b16f08f40cd0c59847c5497d2c31255c42ab11951d273a2d4cc6c51",
+      "Content-Type" => "application/json",
+      "Accept" => "application/json"
     }
   end
 
