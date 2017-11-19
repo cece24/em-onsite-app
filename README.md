@@ -6,6 +6,7 @@ TO DO:
 * Datetime Formatting
 * Deployment
 * Log in flow - must store EM cookie for use on every page
+-- review how cookie is set and stored across rails app
 -- make AJAX call to own server to return cookie
 -- retrieve cookie using jQuery
 https://stackoverflow.com/questions/15351911/rails-store-a-cookie-in-controller-and-get-from-javascript-jquery

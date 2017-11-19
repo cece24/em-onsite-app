@@ -121,8 +121,8 @@ class PagesController < ApplicationController
       :debug_output => $stdout
     )
 
-    cookie = response.headers["set-cookie"]
-    puts cookie
+    session[:experience_user] = response.headers["set-cookie"]
+    puts session[:experience_user]
 
     if response.code == 200
       response_data = JSON.parse(response.body)
@@ -139,7 +139,7 @@ class PagesController < ApplicationController
     response = HTTParty.post("https://core.eventmobi.com/cms/v1/events/21555/announcements",
       :headers => {
         "Content-Type" => "application/json",
-        "Cookie" => "em-login-organizer=1433bc0ae102f2921a594e77e0cf3c6d668aadbccc38b019831ec054299bf500; Domain=.eventmobi.com; expires=Mon, 18 Dec 2017 19:12:18 GMT; HttpOnly; Path=/; Secure"
+        "Cookie" => experience_user
       },
       :body => {
         "title": "Kitten Boop!",
