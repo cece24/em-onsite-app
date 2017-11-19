@@ -5,7 +5,8 @@ class PagesController < ApplicationController
     # base_uri "https://api.eventmobi.com/v2/events/10278f43-4e8b-44f9-94ee-35cdd4d7c6d3"
     # response = HTTParty.get('https://experience.eventmobi.com/organization/eventmobi-support/event/21555/companies')
     response = HTTParty.get("https://api.eventmobi.com/v2/events/10278f43-4e8b-44f9-94ee-35cdd4d7c6d3/sessions/resources",
-      :headers => headers
+      :headers => headers,
+      :debug_output => $stdout
       )
 
     if response.code == 200
@@ -22,38 +23,70 @@ class PagesController < ApplicationController
 
   def create
     #Create a session
-    # response = HTTParty.post("https://api.eventmobi.com/v2/events/10278f43-4e8b-44f9-94ee-35cdd4d7c6d3/sessions/resources",
-    #   headers: {
-    #     "X-API-Key" => "b809f96a3b16f08f40cd0c59847c5497d2c31255c42ab11951d273a2d4cc6c51",
-    #     "Content-Type" => "application/json"
-    #   },
-    #   body: {{
-    #       "id": "1445eb89-b0a7-4a42-956d-008c9c896aef",
-    #       "name": "Ninety-Nine Problems But This Post Request Is Not One of Them",
-    #       "description": "<p></p>",
-    #       "location": "Great Hall",
-    #       "start_datetime": "2018-05-23T01:30:00",
-    #       "end_datetime": "20218-05-23T03:30:00",s
-    #       "track_ids": [],
-    #       "tracks": [],
-    #       "roles": []
-    #     }
-    #   }
-    # )
+    # session_received = {
+    #   "id": params[:id],
+    #   "name": params[:name],
+    #   "description": params[:description],
+    #   "location": params[:location],
+    #   "start_datetime": params[:start_time] + ":00",
+    #   "end_datetime": params[:end_time] + ":00"
+    # }
+
+    # session_received = {
+    #   id: "greatestideverup4345",
+    #   name: "Kitty Booping",
+    #   description: "Properly boop your cats with this information lesson!",
+    #   location: "Hall of MAOs",
+    #   start_datetime: "2018-05-23T10:00:00",
+    #   end_datetime: "2018-05-23T12:00:00"
+    # }
     #
-    # puts response.code
+    # json_body = session_received.to_json
+    #
+    # puts "JSON Body"
+    # puts json_body
+    # puts json_body.class
+
+    response = HTTParty.post("https://api.eventmobi.com/v2/events/10278f43-4e8b-44f9-94ee-35cdd4d7c6d3/sessions/resources",
+      headers: { "X-API-Key" => "b809f96a3b16f08f40cd0c59847c5497d2c31255c42ab11951d273a2d4cc6c51",
+        "Content-Type" => "application/json",
+        "Accept" => "application/json"
+        },
+      body: {
+          "id": "1445eb69c896aef",
+          "name": "Ninety-Nine Problems But This Post Request was 1000",
+          "description": "<p>Changes in how we live, communicate, do business, move and interact are taking place at an ever-increasing pace. We face new challenges each day. Through best practices, your in-house API won'\''t be one of them. We show you how to transform to meet the need of users to facilitate rapid change by re-imagining processes and requirements and adopting new technologies. Harnessing a need for change as an opportunity to positively shift the way we design, shape internal    environments.</p>",
+          "location": "Great Hall",
+          "start_datetime": "2020-11-08T01:30:00",
+          "end_datetime": "2020-11-08T01:30:00",
+          "track_ids": [],
+          "tracks": [],
+          "roles": []
+        }.to_json,
+      :debug_output => $stdout
+    )
+
+    if response.code == 200
+      puts "Successful post request!"
+      puts "Response received: #{response}"
+    else
+      puts "Request error: #{response.code} #{response.message}"
+      json_response = JSON.parse(response.body)
+      puts "Bad request, parsed body"
+      puts json_response
+    end
 
   end
 
   def new
-    #code
+
   end
 
   private
 
   def headers
-    return { "X-API-Key": "b809f96a3b16f08f40cd0c59847c5497d2c31255c42ab11951d273a2d4cc6c51",
-      "Content-Type": "application/json"
+    return { "X-API-Key" => "b809f96a3b16f08f40cd0c59847c5497d2c31255c42ab11951d273a2d4cc6c51",
+      "Content-Type" => "application/json"
     }
   end
 

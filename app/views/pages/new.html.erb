@@ -1,3 +1,41 @@
 <h1>Create A New Session</h1>
 
 <%= link_to "Back", root_path %>
+
+<div class="">
+
+  <%= form_tag(pages_path, method: "post") do  %>
+    <div class="">
+      <%= label_tag(:id, "ID: ") %>
+      <%= text_field_tag(:id) %>
+    </div>
+
+    <div class="">
+      <%= label_tag(:name, "Name: ") %>
+      <%= text_field_tag(:name) %>
+    </div>
+
+    <div class="">
+      <%= label_tag(:description, "Description: ") %>
+      <%= text_field_tag(:description) %>
+    </div>
+
+    <div class="">
+      <%= label_tag(:location, "Location: ") %>
+      <%= text_field_tag(:location) %>
+    </div>
+
+    <div class="">
+      <%= label_tag(:start_time, "Start Date and Time: ") %>
+      <%= datetime_local_field_tag(:start_time) %>
+    </div>
+
+    <div class="">
+      <%= label_tag(:end_time, "End Date and Time: ") %>
+      <%= datetime_local_field_tag(:end_time) %>
+    </div>
+
+    <%= submit_tag("Add Session") %>
+  <% end %>
+
+</div>
