@@ -23,49 +23,26 @@ class PagesController < ApplicationController
 
   def create
     #Create a session
-    # session_received = {
-    #   "id": params[:id],
-    #   "name": params[:name],
-    #   "description": params[:description],
-    #   "location": params[:location],
-    #   "start_datetime": params[:start_time] + ":00",
-    #   "end_datetime": params[:end_time] + ":00"
-    # }
-
-    # session_received = {
-    #   id: "greatestideverup4345",
-    #   name: "Kitty Booping",
-    #   description: "Properly boop your cats with this information lesson!",
-    #   location: "Hall of MAOs",
-    #   start_datetime: "2018-05-23T10:00:00",
-    #   end_datetime: "2018-05-23T12:00:00"
-    # }
-    #
-    # json_body = session_received.to_json
-    #
-    # puts "JSON Body"
-    # puts json_body
-    # puts json_body.class
+    session_received = {
+      "id": params[:id],
+      "name": params[:name],
+      "description": params[:description],
+      "location": params[:location],
+      "start_datetime": params[:start_time] + ":00",
+      "end_datetime": params[:end_time] + ":00",
+      "track_ids": [],
+      "tracks": [],
+      "roles": []
+    }
 
     response = HTTParty.post("https://api.eventmobi.com/v2/events/10278f43-4e8b-44f9-94ee-35cdd4d7c6d3/sessions/resources",
       :headers => post_headers,
-      body: {
-          "id": "1445eb96aef",
-          "name": "Ninety-Nine Problems But This Post Request was 1000",
-          "description": "<p>Changes in how we live, communicate, do business, move and interact are taking place at an ever-increasing pace. We face new challenges each day. Through best practices, your in-house API won'\''t be one of them. We show you how to transform to meet the need of users to facilitate rapid change by re-imagining processes and requirements and adopting new technologies. Harnessing a need for change as an opportunity to positively shift the way we design, shape internal    environments.</p>",
-          "location": "Great Hall",
-          "start_datetime": "2020-11-08T01:30:00",
-          "end_datetime": "2020-11-08T01:30:00",
-          "track_ids": [],
-          "tracks": [],
-          "roles": []
-        }.to_json,
+      :body => session_received.to_json,
       :debug_output => $stdout
     )
 
-    if response.code == 200
-      puts "Successful post request!"
-      puts "Response received: #{response}"
+    if response.code == 201
+      redirect_to root_url
     else
       puts "Request error: #{response.code} #{response.message}"
       json_response = JSON.parse(response.body)
