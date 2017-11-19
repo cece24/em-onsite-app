@@ -3,5 +3,7 @@
 <% @sessions.each do |session| %>
   <h3><%= session["name"]%></h3>
   <%= session["description"] %>
-  <p>Tracks: <%= session["tracks"][0]["name"] %></p>
+  <% if session["tracks"].any? %>
+    <p>Tracks: <%= session["tracks"][0]["name"] %></p>
+  <% end %>
 <% end %>
