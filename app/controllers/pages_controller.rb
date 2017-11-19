@@ -105,10 +105,24 @@ class PagesController < ApplicationController
   end
 
   def access
-    response = HTTParty.get("https://core.eventmobi.com/cms/v1/organizations/d8fd5bf9-b3ce-4e1d-98a0-6dbbb03b4249/events/21555",
-      :headers => access_headers,
+    # response = HTTParty.get("https://core.eventmobi.com/cms/v1/organizations/d8fd5bf9-b3ce-4e1d-98a0-6dbbb03b4249/events/21555",
+    #   :headers => access_headers,
+    #   :debug_output => $stdout
+    # )
+
+    response = HTTParty.post("https://core.eventmobi.com/cms/v1/session/action/login",
+      :headers => {
+        "Content-Type" => "application/json"
+      },
+      :body => {
+        "email": "cecilia@eventmobi.com",
+        "password": "Meowbot24!"
+      }.to_json,
       :debug_output => $stdout
     )
+
+    cookie = response.headers["set-cookie"]
+    puts cookie
 
     if response.code == 200
       response_data = JSON.parse(response.body)
@@ -119,6 +133,28 @@ class PagesController < ApplicationController
       puts "Bad request, parsed body"
       puts json_response
     end
+  end
+
+  def sendalert
+    response = HTTParty.post("https://core.eventmobi.com/cms/v1/events/21555/announcements",
+      :headers => {
+        "Content-Type" => "application/json",
+        "Cookie" => "em-login-organizer=1433bc0ae102f2921a594e77e0cf3c6d668aadbccc38b019831ec054299bf500; Domain=.eventmobi.com; expires=Mon, 18 Dec 2017 19:12:18 GMT; HttpOnly; Path=/; Secure"
+      },
+      :body => {
+        "title": "Kitten Boop!",
+        "content": "<p>Hello!</p>",
+        "scheduled": false,
+        "send_as_email": false,
+        "recipient_type": "all",
+        "people_group_ids": [],
+        "send_as_push": false,
+        "scheduled_date": nil
+      }.to_json,
+      :debug_output => $stdout
+    )
+
+    render :access
   end
 
 

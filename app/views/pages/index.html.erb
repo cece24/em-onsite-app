@@ -3,6 +3,8 @@
 <%= link_to "Access CMS Page", access_path %>
 <br><br>
 <%= link_to "Create a New Session", new_page_path %>
+<br><br>
+<%= link_to "Send Alert", alert_path %>
 
 <% @sessions.each do |session| %>
   <h3><%= session["name"]%></h3>

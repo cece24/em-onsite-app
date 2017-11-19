@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :pages
 
   get '/access', to: "pages#access", as: "access"
+
+  get '/sendalert', to: "pages#sendalert", as: "alert"
 end
