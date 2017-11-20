@@ -8,9 +8,6 @@
 
 <% @sessions.each do |session| %>
   <h3><%= session["name"]%></h3>
-  <%= session["description"] %>
-  <% if session["tracks"].any? %>
-    <p>Tracks: <%= session["tracks"][0]["name"] %></p>
-  <% end %>
+  <%= session["description"].html_safe %>
   <%= link_to "Edit", edit_page_path(session["id"]) %>
 <% end %>

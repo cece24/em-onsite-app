@@ -1,11 +1,14 @@
 require "json"
 
+puts ENV["EM_API_KEY"]
+
 class PagesController < ApplicationController
   def index
     # base_uri "https://api.eventmobi.com/v2/events/10278f43-4e8b-44f9-94ee-35cdd4d7c6d3"
     # response = HTTParty.get('https://experience.eventmobi.com/organization/eventmobi-support/event/21555/companies')
-    response = HTTParty.get("https://api.eventmobi.com/v2/events/10278f43-4e8b-44f9-94ee-35cdd4d7c6d3/sessions/resources",
-      :headers => get_headers,
+    response = HTTParty.get("https://core.eventmobi.com/cms/v1/events/21555/session-details?limit=50&offset=0&sort=date,start_time,name",
+      :headers => headers_with_cookie,
+      :timeout => 5,
       :debug_output => $stdout
       )
 
@@ -15,6 +18,7 @@ class PagesController < ApplicationController
       @sessions = parsed_data["data"]
     else
       puts "Request error: #{response.code} #{response.message}"
+      flash[:alert] = "Whoops! Something went wrong with your request."
     end
 
   end
@@ -40,6 +44,7 @@ class PagesController < ApplicationController
     response = HTTParty.post("https://api.eventmobi.com/v2/events/10278f43-4e8b-44f9-94ee-35cdd4d7c6d3/sessions/resources",
       :headers => post_headers,
       :body => session_received.to_json,
+      :timeout => 5,
       :debug_output => $stdout
     )
 
@@ -59,6 +64,7 @@ class PagesController < ApplicationController
     session_id = params[:id]
     response = HTTParty.get("https://api.eventmobi.com/v2/events/10278f43-4e8b-44f9-94ee-35cdd4d7c6d3/sessions/resources/#{session_id}",
       :headers => get_headers,
+      :timeout => 5,
       :debug_output => $stdout
     )
     # pass it as instance to form
@@ -90,6 +96,7 @@ class PagesController < ApplicationController
     response = HTTParty.patch("https://api.eventmobi.com/v2/events/10278f43-4e8b-44f9-94ee-35cdd4d7c6d3/sessions/resources/#{session_id}",
       :headers => post_headers,
       :body => session_update.to_json,
+      :timeout => 5,
       :debug_output => $stdout
     )
 
@@ -118,6 +125,7 @@ class PagesController < ApplicationController
         "email": "cecilia@eventmobi.com",
         "password": "Meowbot24!"
       }.to_json,
+      :timeout => 5,
       :debug_output => $stdout
     )
 
@@ -151,6 +159,7 @@ class PagesController < ApplicationController
         "send_as_push": false,
         "scheduled_date": nil
       }.to_json,
+      :timeout => 5,
       :debug_output => $stdout
     )
 
@@ -161,15 +170,22 @@ class PagesController < ApplicationController
   private
 
   def get_headers
-    return { "X-API-Key" => "b809f96a3b16f08f40cd0c59847c5497d2c31255c42ab11951d273a2d4cc6c51",
+    return { "X-API-Key" => ENV["EM_API_KEY"],
       "Content-Type" => "application/json"
     }
   end
 
   def post_headers
-    return { "X-API-Key" => "b809f96a3b16f08f40cd0c59847c5497d2c31255c42ab11951d273a2d4cc6c51",
+    return { "X-API-Key" => ENV["EM_API_KEY"],
       "Content-Type" => "application/json",
       "Accept" => "application/json"
+    }
+  end
+
+  def headers_with_cookie
+    return {
+      "Content-Type" => "application/json",
+      "Cookie" => experience_user
     }
   end
 

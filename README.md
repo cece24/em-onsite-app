@@ -2,14 +2,34 @@
 
 TO DO:
 
-* Hide API key
-* Datetime Formatting
+* Hide API key - DONE
+- Heroku has place to store API keys
+- most servers have a specific key store
+* Datetime Formatting - DONE
+
+* Log in pages
+* Organization page
+* Events page
+
+* Send alert page
+* Enable/Disable P&F
+* Error handling
+* Add attendee
+* Styling
 * Deployment
-* Log in flow - must store EM cookie for use on every page
+
+Stretch
+* If using AJAX..Log in flow - must store EM cookie for use on every page
 -- review how cookie is set and stored across rails app
+-- EM cookie now stored in rails session hash
+
+-- how to include this value in JS files?
 -- make AJAX call to own server to return cookie
 -- retrieve cookie using jQuery
 https://stackoverflow.com/questions/15351911/rails-store-a-cookie-in-controller-and-get-from-javascript-jquery
+* configure HTTParty requests to verify SSL cert correctly
+(current all set to false)
+* Search for sessions
 
 Using Open API
 * Delete sessions
@@ -23,12 +43,6 @@ Using Internal API
 * Send Alert - Done
 -- sending null values?! "scheduled_date": null
 -- setting it to nil, will parse into null with .json
-
-* Log in pages
-* Send alert page
-
-* Search for sessions
-* Enable/Disable P&F
 
 Questions
 * Sometimes requests take a LONG time or fail
