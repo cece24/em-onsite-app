@@ -115,3 +115,7 @@ input {
   -webkit-appearance: none;
   display: inline-block;
 }
+
+.error-msg {
+  color: red;
+}
