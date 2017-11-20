@@ -4,8 +4,8 @@ puts ENV["EM_API_KEY"]
 
 class PagesController < ApplicationController
   def index
-    # base_uri "https://api.eventmobi.com/v2/events/10278f43-4e8b-44f9-94ee-35cdd4d7c6d3"
-    # response = HTTParty.get('https://experience.eventmobi.com/organization/eventmobi-support/event/21555/companies')
+    # # base_uri "https://api.eventmobi.com/v2/events/10278f43-4e8b-44f9-94ee-35cdd4d7c6d3"
+    # # response = HTTParty.get('https://experience.eventmobi.com/organization/eventmobi-support/event/21555/companies')
     response = HTTParty.get("https://core.eventmobi.com/cms/v1/events/21555/session-details?limit=50&offset=0&sort=date,start_time,name",
       :headers => headers_with_cookie,
       :timeout => 5,
@@ -129,8 +129,8 @@ class PagesController < ApplicationController
       :debug_output => $stdout
     )
 
-    session[:experience_user] = response.headers["set-cookie"]
-    puts session[:experience_user]
+    session[:exp_user] = response.headers["set-cookie"]
+    puts session[:exp_user]
 
     if response.code == 200
       response_data = JSON.parse(response.body)
@@ -147,7 +147,7 @@ class PagesController < ApplicationController
     response = HTTParty.post("https://core.eventmobi.com/cms/v1/events/21555/announcements",
       :headers => {
         "Content-Type" => "application/json",
-        "Cookie" => experience_user
+        "Cookie" => exp_user
       },
       :body => {
         "title": "Kitten Boop!",
@@ -185,7 +185,7 @@ class PagesController < ApplicationController
   def headers_with_cookie
     return {
       "Content-Type" => "application/json",
-      "Cookie" => experience_user
+      "Cookie" => exp_user
     }
   end
 

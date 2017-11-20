@@ -1,0 +1,24 @@
+<div class="large-container centered">
+  <%= image_tag("https://d1futyegjveret.cloudfront.net/experience/logo.svg", class: "container-logo centered") %>
+
+  <div class="log-in-container">
+    <h3 class="small-title centered">Please Log In</h3>
+
+    <%= form_tag(sessions_path, method: "post") do %>
+      <div class="form-field">
+        <%= label_tag(:email, "Email Address", class: "form-label") %>
+        <%= email_field_tag(:email, nil, class: "form-input") %>
+      </div>
+
+      <div class="form-field">
+        <%= label_tag(:password, "Password", class: "form-label") %>
+        <%= password_field_tag(:password, nil, class: "form-input") %>
+      </div>
+
+      <div class="submit-button-container">
+        <%= submit_tag("Log In", class: "button") %>
+      </div>
+    <% end %>
+
+  </div>
+</div>

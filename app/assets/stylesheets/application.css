@@ -21,5 +21,97 @@
  }
 
  body {
-     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "EM Open Sans",sans-serif;
+  color: #575757;
+  background-color: #f2f2f2;
  }
+
+
+/* Log In Page Logo */
+ .container-logo {
+  width: 250px;
+  display: block;
+  margin-bottom: 50px;
+ }
+
+.centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* Log in Container */
+
+.small-title {
+  font-size: 1.2rem;
+  font-weight: 200;
+}
+
+@media screen and (min-width: 640px)
+.log-in-container {
+  padding: 40px;
+}
+
+.log-in-container {
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,.35);
+  padding: 35px 25px;
+}
+
+@media screen and (min-width: 640px)
+.large-container {
+  margin-top: 80px;
+}
+
+.large-container {
+  max-width: 450px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+
+/* Form Styling */
+.form-field {
+  margin-bottom: 30px;
+}
+
+.form-label {
+    display: block;
+    color: #575757;
+    margin-bottom: .4em;
+}
+
+input {
+  width: 100%;
+}
+
+.form-input {
+    display: inline-block;
+    color: #575757;
+    font: inherit;
+    font-weight: 400;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    margin: 0;
+    padding: 7px 10px;
+    outline: 0;
+}
+
+.submit-button-container {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.button {
+  color: #fff;
+  background-color: #6ebb83;
+  font-size: .9rem;
+  text-decoration: none;
+  border: none;
+  border-radius: 15px;
+  margin: 0 5px 0 0;
+  padding: 6px 16px;
+  transition: background-color .2s;
+  -webkit-appearance: none;
+  display: inline-block;
+}

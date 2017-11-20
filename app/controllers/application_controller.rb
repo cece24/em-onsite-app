@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  def experience_user
-    session[:experience_user]
+  def exp_user
+    session[:exp_user]
   end
 
-  helper_method :experience_user
+  helper_method :exp_user
 end

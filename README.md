@@ -8,6 +8,7 @@ TO DO:
 * Datetime Formatting - DONE
 
 * Log in pages
+-- add 'onsite app' header
 * Organization page
 * Events page
 
