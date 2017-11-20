@@ -18,7 +18,7 @@ class PagesController < ApplicationController
       @sessions = parsed_data["data"]
     else
       puts "Request error: #{response.code} #{response.message}"
-      flash[:alert] = "Whoops! Something went wrong with your request."
+      flash.now[:alert] = "Whoops! Something went wrong with your request."
     end
 
   end

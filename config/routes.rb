@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   get '/access', to: "pages#access", as: "access"
 
   get '/sendalert', to: "pages#sendalert", as: "alert"
+
+  resources :sessions, only: %i(create new destroy)
 end

@@ -6,8 +6,16 @@
 <br><br>
 <%= link_to "Send Alert", alert_path %>
 
-<% @sessions.each do |session| %>
-  <h3><%= session["name"]%></h3>
-  <%= session["description"].html_safe %>
-  <%= link_to "Edit", edit_page_path(session["id"]) %>
+<% if flash.any? %>
+  <% flash.each do |type, msg| %>
+    <p><%= msg %></p>
+  <% end %>
+<% end %>
+
+<% if @sessions %>
+  <% @sessions.each do |session| %>
+    <h3><%= session["name"]%></h3>
+    <%= session["description"].html_safe %>
+    <%= link_to "Edit", edit_page_path(session["id"]) %>
+  <% end %>
 <% end %>
