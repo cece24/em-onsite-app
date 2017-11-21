@@ -1,17 +1,10 @@
 <div class="page-container">
-
-  <h1>EM Onsite App</h1>
-
-  <%= link_to "Access CMS Page", access_path %>
-  <br><br>
-  <%= link_to "Create a New Session", new_page_path %>
-  <br><br>
   <%= link_to "Send Announcement", new_alert_path %>
-
-  <%= link_to "Send Alert (Old)", alert_path %>
-
+  <br><br>
   <%= link_to "Surveys", surveys_path %>
-
+  <br><br>
+  <%= link_to "Log Out", session_path(session[:exp_user]), method: :delete, data: { confirm: "Are you sure you want to log out?"} %>
+  <br><br>
   <% if flash.any? %>
     <% flash.each do |type, msg| %>
       <p class="error-msg"><%= msg %></p>
@@ -26,6 +19,8 @@
     <% end %>
   <% end %>
 
-  <%= link_to "Log Out", session_path(session[:exp_user]), method: :delete, data: { confirm: "Are you sure you want to log out?"} %>
+  <p>old</p>
+  <%= link_to "Access CMS Page", access_path %>
 
+  <%= link_to "Create a New Session", new_page_path %>
 </div>

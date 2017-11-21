@@ -19,6 +19,7 @@ TO DO:
 -- Surveys (surveys and session feedback)
 - bug, is out of sync with exp manager Settings > hide survey checkbox
 * Contact Support!!!!
+* Go To App
 * Error handling
 * Add attendee
 * Styling
