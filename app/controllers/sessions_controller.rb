@@ -22,8 +22,6 @@ class SessionsController < ApplicationController
     puts session[:exp_user]
 
     if response.code == 200
-      response_data = JSON.parse(response.body)
-      @access_data = response_data
       redirect_to pages_url
     else
       puts "Request error: #{response.code} #{response.message}"
@@ -33,6 +31,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    #code
+    session[:exp_user] = nil
+
+    redirect_to new_session_url
   end
 end
