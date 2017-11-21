@@ -1,4 +1,11 @@
 <div class="page-container">
+
+  <% if flash.any? %>
+    <% flash.each do |type, msg| %>
+      <p class="error-msg"><%= msg %></p>
+    <% end %>
+  <% end %>
+  
   <h3 class="small-title centered">Surveys</h3>
 
   <% if @surveys.any? %>

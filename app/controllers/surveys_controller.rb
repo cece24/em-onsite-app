@@ -28,7 +28,7 @@ class SurveysController < ApplicationController
   end
 
   def survey_show
-    response = HTTParty.patch("https://core.eventmobi.com/cms/v1/events/#{event_id}/surveys/#{survey_id}pp",
+    response = HTTParty.patch("https://core.eventmobi.com/cms/v1/events/#{event_id}/surveys/#{survey_id}",
       :headers => exp_headers,
       :body => {
         "event_id"  => event_id,
@@ -49,7 +49,7 @@ class SurveysController < ApplicationController
   end
 
   def survey_hide
-    response = HTTParty.patch("https://core.eventmobi.com/cms/v1/events/#{event_id}/surveys/#{survey_id}pp",
+    response = HTTParty.patch("https://core.eventmobi.com/cms/v1/events/#{event_id}/surveys/#{survey_id}",
       :headers => exp_headers,
       :body => {
         "event_id"  => event_id,
