@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
     puts session[:exp_user]
 
     if response.code == 200
-      redirect_to pages_url
+      redirect_to organizations_url
     else
       puts "Request error: #{response.code} #{response.message}"
       flash.now[:alert] = "Please check your credentials and try again."
