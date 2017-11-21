@@ -12,8 +12,12 @@ TO DO:
 * Organization page
 * Events page
 
+** UPDATE THE FOLLOWING ONCE ORG & EVENT IS SELECTED **
 * Send alert page
+-- add in all form fields
 * Enable/Disable P&F
+-- Surveys (surveys and session feedback)
+- bug, is out of sync with exp manager Settings > hide survey checkbox
 * Error handling
 * Add attendee
 * Styling

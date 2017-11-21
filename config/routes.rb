@@ -10,4 +10,10 @@ Rails.application.routes.draw do
 
   resources :sessions, only: %i(create new destroy)
   resources :alerts, only: %i(create new)
+  resources :surveys, only: %i(index) do
+    member do
+      patch :survey_hide
+      patch :survey_show
+    end
+  end
 end

@@ -1,0 +1,24 @@
+<h3 class="small-title centered">Surveys</h3>
+
+<% if @surveys.any? %>
+  <% @surveys.each do |survey| %>
+    <div class="list-card">
+      <p><%= survey["name"] %></p>
+      <p>Type:
+        <% if survey["type"] == "survey" %>
+          Survey
+        <% else %>
+          Session Feedback
+        <% end %>
+      </p>
+
+      <% if survey["visible"] == false %>
+        <%= button_to "Show", survey_show_survey_path(survey["id"]), method: :patch, params: { event_id: survey["event_id"] }, class: "button" %>
+      <% elsif survey["visible"] == true %>
+        <%= button_to "Hide", survey_hide_survey_path(survey["id"]), method: :patch, params: { event_id: survey["event_id"] }, class: "button" %>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <p>There are no surveys yet.</p>
+<% end %>

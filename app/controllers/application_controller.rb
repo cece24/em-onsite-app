@@ -6,4 +6,12 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :exp_user
+
+  def exp_headers
+    return {
+      "Content-Type" => "application/json",
+      "Cookie" => exp_user
+    }
+  end
+
 end
