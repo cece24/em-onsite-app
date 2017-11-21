@@ -23,12 +23,12 @@ class SurveysController < ApplicationController
       }
     else
       flash.now[:alert] = "Whoops! Something went wrong with your request."
-      redirect_to organization_event_url
+      redirect_to organization_event_url(organization_id: organization_id, id: event_id)
     end
   end
 
   def survey_show
-    response = HTTParty.patch("https://core.eventmobi.com/cms/v1/events/#{event_id}/surveys/#{survey_id}",
+    response = HTTParty.patch("https://core.eventmobi.com/cms/v1/events/#{event_id}/surveys/#{survey_id}pp",
       :headers => exp_headers,
       :body => {
         "event_id"  => event_id,
@@ -40,16 +40,16 @@ class SurveysController < ApplicationController
     )
 
     if response.code == 200
-      flash.now[:notice] = "The survey is now visible."
-      redirect_to organization_event_surveys_url
+      flash[:notice] = "The survey is now visible."
+      redirect_to organization_event_surveys_url(organization_id: organization_id, id: event_id)
     else
-      flash.now[:alert] = "Whoops! Something went wrong with your request."
-      redirect_to organization_event_surveys_url
+      flash[:alert] = "Whoops! Something went wrong with your request."
+      redirect_to organization_event_surveys_url(organization_id: organization_id, id: event_id)
     end
   end
 
   def survey_hide
-    response = HTTParty.patch("https://core.eventmobi.com/cms/v1/events/#{event_id}/surveys/#{survey_id}",
+    response = HTTParty.patch("https://core.eventmobi.com/cms/v1/events/#{event_id}/surveys/#{survey_id}pp",
       :headers => exp_headers,
       :body => {
         "event_id"  => event_id,
@@ -61,15 +61,19 @@ class SurveysController < ApplicationController
     )
 
     if response.code == 200
-      flash.now[:notice] = "The survey is now hidden."
-      redirect_to organization_event_surveys_url
+      flash[:notice] = "The survey is now hidden."
+      redirect_to organization_event_surveys_url(organization_id: organization_id, id: event_id)
     else
-      flash.now[:alert] = "Whoops! Something went wrong with your request."
-      redirect_to organization_event_surveys_url
+      flash[:alert] = "Whoops! Something went wrong with your request."
+      redirect_to organization_event_surveys_url(organization_id: organization_id, id: event_id)
     end
   end
 
   private
+
+  def organization_id
+    return params[:organization_id]
+  end
 
   def event_id
     return params[:event_id]
