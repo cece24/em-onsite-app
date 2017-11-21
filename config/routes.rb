@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :sessions, only: %i(create new destroy)
 
   resources :organizations, only: %i(index) do
-    resources :events, only: %i(index) do
+    resources :events, only: %i(index show) do
       resources :alerts, only: %i(create new)
       resources :surveys, only: %i(index) do
         member do

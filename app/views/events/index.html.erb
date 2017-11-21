@@ -1,0 +1,13 @@
+<div class="page-container">
+  <h3 class="small-title centered">Please select your event.</h3>
+
+  <% if @events.any? %>
+    <% @events.each do |event| %>
+      <div class="">
+        <%= link_to (organization_event_path(event["organization_id"],event["id"])) do %>
+          <h3 class="small-title"><%= event["name"] %></h3>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
