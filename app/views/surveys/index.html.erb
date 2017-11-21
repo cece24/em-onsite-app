@@ -1,41 +1,43 @@
-<h3 class="small-title centered">Surveys</h3>
+<div class="page-container">
+  <h3 class="small-title centered">Surveys</h3>
 
-<% if @surveys.any? %>
-  <% @surveys.each do |survey| %>
-    <div class="list-card">
-      <p>
-        <span class="bold">Survey Name:</span>
-        <span><%= survey["name"] %></span>
-      </p>
+  <% if @surveys.any? %>
+    <% @surveys.each do |survey| %>
+      <div class="list-card">
+        <p>
+          <span class="bold">Survey Name:</span>
+          <span><%= survey["name"] %></span>
+        </p>
 
-      <% if survey["visible"] == false %>
-        <%= button_to "Show", survey_show_survey_path(survey["id"]), method: :patch, params: { event_id: survey["event_id"] }, class: "blue button" %>
-      <% elsif survey["visible"] == true %>
-        <%= button_to "Hide", survey_hide_survey_path(survey["id"]), method: :patch, params: { event_id: survey["event_id"] }, class: "green button" %>
-      <% end %>
-    </div>
+        <% if survey["visible"] == false %>
+          <%= button_to "Show", survey_show_survey_path(survey["id"]), method: :patch, params: { event_id: survey["event_id"] }, class: "blue button" %>
+        <% elsif survey["visible"] == true %>
+          <%= button_to "Hide", survey_hide_survey_path(survey["id"]), method: :patch, params: { event_id: survey["event_id"] }, class: "green button" %>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <p>There are no surveys yet.</p>
   <% end %>
-<% else %>
-  <p>There are no surveys yet.</p>
-<% end %>
 
-<h3 class="small-title centered">Session Feedback Surveys</h3>
+  <h3 class="small-title centered">Session Feedback Surveys</h3>
 
-<% if @session_feedback_surveys.any? %>
-  <% @session_feedback_surveys.each do |survey| %>
-    <div class="list-card">
-      <p>
-        <span class="bold">Survey Name:</span>
-        <span><%= survey["name"] %></span>
-      </p>
+  <% if @session_feedback_surveys.any? %>
+    <% @session_feedback_surveys.each do |survey| %>
+      <div class="list-card">
+        <p>
+          <span class="bold">Survey Name:</span>
+          <span><%= survey["name"] %></span>
+        </p>
 
-      <% if survey["visible"] == false %>
-        <%= button_to "Show", survey_show_survey_path(survey["id"]), method: :patch, params: { event_id: survey["event_id"] }, class: "blue button" %>
-      <% elsif survey["visible"] == true %>
-        <%= button_to "Hide", survey_hide_survey_path(survey["id"]), method: :patch, params: { event_id: survey["event_id"] }, class: "green button" %>
-      <% end %>
-    </div>
+        <% if survey["visible"] == false %>
+          <%= button_to "Show", survey_show_survey_path(survey["id"]), method: :patch, params: { event_id: survey["event_id"] }, class: "blue button" %>
+        <% elsif survey["visible"] == true %>
+          <%= button_to "Hide", survey_hide_survey_path(survey["id"]), method: :patch, params: { event_id: survey["event_id"] }, class: "green button" %>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <p>There are no session feedback surveys yet.</p>
   <% end %>
-<% else %>
-  <p>There are no session feedback surveys yet.</p>
-<% end %>
+</div>

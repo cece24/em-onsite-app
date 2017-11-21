@@ -24,6 +24,7 @@
   font-family: "EM Open Sans",sans-serif;
   color: #575757;
   background-color: #f2f2f2;
+  margin-top: 0;
  }
 
 
@@ -32,6 +33,7 @@
   width: 250px;
   display: block;
   margin-bottom: 50px;
+  position: relative;
  }
 
 .centered {
@@ -39,6 +41,16 @@
   margin-right: auto;
 }
 
+.login-title-onsite {
+  display: inline-block;
+  font-size: 1.6rem;
+  font-weight: 100;
+  color: #FFB600;
+  width: 110px;
+  position: absolute;
+  left: -12px;
+  top: 60px;
+}
 
 /* Text Styles */
 .small-title {
@@ -48,6 +60,62 @@
 
 .bold {
   font-weight: 600;
+}
+
+
+/* Main Nav Bar */
+.main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  color: #fff;
+  background-color: #FFB600;
+  /* grey #535b6a */
+  /*border-bottom: 1px solid #e8e8e8;*/
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,0.17);
+}
+
+.small-logo-container {
+  width: 150px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.nav-title-container {
+  display: block;
+  width: 236px;
+}
+
+.title-onsite {
+  display: inline-block;
+  font-size: 1.9rem;
+  font-weight: 200;
+}
+
+.arrow-icon {
+  position: absolute;
+  left: 10px;
+  line-height: 50px;
+  font-weight: 400;
+  font-size: 1.5em;
+  font-style: normal;
+}
+
+/* larger div container back link, for easy tapping */
+.back-button {
+  display: inline-block;
+  width: 60px;
+  line-height: 50px;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+}
+
+/* Common Page Styles */
+.page-container {
+  padding-top: 50px;
 }
 
 

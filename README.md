@@ -18,6 +18,7 @@ TO DO:
 * Enable/Disable P&F
 -- Surveys (surveys and session feedback)
 - bug, is out of sync with exp manager Settings > hide survey checkbox
+* Contact Support!!!!
 * Error handling
 * Add attendee
 * Styling
