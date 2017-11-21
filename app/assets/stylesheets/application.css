@@ -40,12 +40,18 @@
 }
 
 
-/* Log in Container */
-
+/* Text Styles */
 .small-title {
   font-size: 1.2rem;
   font-weight: 200;
 }
+
+.bold {
+  font-weight: 600;
+}
+
+
+/* Log in Container */
 
 @media screen and (min-width: 640px)
 .log-in-container {
@@ -104,7 +110,6 @@ input {
 
 .button {
   color: #fff;
-  background-color: #6ebb83;
   font-size: .9rem;
   text-decoration: none;
   border: none;
@@ -116,6 +121,26 @@ input {
   display: inline-block;
 }
 
+.blue {
+  background-color: #0093c7;
+}
+
+.green {
+  background-color: #6ebb83;
+}
+
 .error-msg {
   color: red;
+}
+
+
+/* Lists */
+
+/* used in surveys */
+.list-card {
+  background-color: white;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px
 }

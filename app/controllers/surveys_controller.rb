@@ -8,7 +8,14 @@ class SurveysController < ApplicationController
 
     if response.code == 200
       survey_data = JSON.parse(response.body)
-      @surveys = survey_data["data"]
+      all_surveys = survey_data["data"]
+      @surveys = all_surveys.select { |key, value|
+        key["type"] == "survey"
+      }
+
+      @session_feedback_surveys = all_surveys.select { |key, value|
+        key["type"] == "session_feedback"
+      }
     else
       flash.now[:alert] = "Whoops! Something went wrong with your request."
       redirect_to root_url
