@@ -19,6 +19,9 @@ class EventsController < ApplicationController
   end
 
   def show
-    #code
+    organization_id = params[:organization_id]
+    @organization_id = organization_id
+    event_id = params[:id]
+    @event_id = event_id
   end
 end

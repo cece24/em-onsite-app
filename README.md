@@ -8,16 +8,17 @@ TO DO:
 * Datetime Formatting - DONE
 
 * Log in pages
--- add 'onsite app' header
-* Organization page
-* Events page
+-- add 'onsite app' header - DONE
+* Organization page - DONE
+* Events page - DONE
 
 ** UPDATE THE FOLLOWING ONCE ORG & EVENT IS SELECTED **
 * Send alert page
 -- add in all form fields
 * Enable/Disable P&F
--- Surveys (surveys and session feedback)
+-- Surveys (surveys and session feedback) - DONE
 - bug, is out of sync with exp manager Settings > hide survey checkbox
+* Change back button to event#show with hamburger icon
 * Contact Support!!!!
 * Go To App
 * Error handling

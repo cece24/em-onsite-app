@@ -1,6 +1,11 @@
 class SurveysController < ApplicationController
   def index
-    response = HTTParty.get("https://core.eventmobi.com/cms/v1/events/21555/surveys",
+    organization_id = params[:organization_id]
+    @organization_id = organization_id
+    event_id = params[:event_id]
+    @event_id = event_id
+
+    response = HTTParty.get("https://core.eventmobi.com/cms/v1/events/#{event_id}/surveys",
       :headers => exp_headers,
       :timeout => 5,
       :debug_output => $stdout
@@ -8,22 +13,22 @@ class SurveysController < ApplicationController
 
     if response.code == 200
       survey_data = JSON.parse(response.body)
-      all_surveys = survey_data["data"]
-      @surveys = all_surveys.select { |key, value|
+      all_organization_event_surveys = survey_data["data"]
+      @surveys = all_organization_event_surveys.select { |key, value|
         key["type"] == "survey"
       }
 
-      @session_feedback_surveys = all_surveys.select { |key, value|
+      @session_feedback_surveys = all_organization_event_surveys.select { |key, value|
         key["type"] == "session_feedback"
       }
     else
       flash.now[:alert] = "Whoops! Something went wrong with your request."
-      redirect_to root_url
+      redirect_to organization_event_url
     end
   end
 
   def survey_show
-    response = HTTParty.patch("https://core.eventmobi.com/cms/v1/events/21555/surveys/#{survey_id}",
+    response = HTTParty.patch("https://core.eventmobi.com/cms/v1/events/#{event_id}/surveys/#{survey_id}",
       :headers => exp_headers,
       :body => {
         "event_id"  => event_id,
@@ -36,15 +41,15 @@ class SurveysController < ApplicationController
 
     if response.code == 200
       flash.now[:notice] = "The survey is now visible."
-      redirect_to surveys_url
+      redirect_to organization_event_surveys_url
     else
       flash.now[:alert] = "Whoops! Something went wrong with your request."
-      redirect_to surveys_url
+      redirect_to organization_event_surveys_url
     end
   end
 
   def survey_hide
-    response = HTTParty.patch("https://core.eventmobi.com/cms/v1/events/21555/surveys/#{survey_id}",
+    response = HTTParty.patch("https://core.eventmobi.com/cms/v1/events/#{event_id}/surveys/#{survey_id}",
       :headers => exp_headers,
       :body => {
         "event_id"  => event_id,
@@ -57,17 +62,17 @@ class SurveysController < ApplicationController
 
     if response.code == 200
       flash.now[:notice] = "The survey is now hidden."
-      redirect_to surveys_url
+      redirect_to organization_event_surveys_url
     else
       flash.now[:alert] = "Whoops! Something went wrong with your request."
-      redirect_to surveys_url
+      redirect_to organization_event_surveys_url
     end
   end
 
   private
 
   def event_id
-    return params["event_id"]
+    return params[:event_id]
   end
 
   def survey_id
