@@ -14,23 +14,28 @@ TO DO:
 
 ** UPDATE THE FOLLOWING ONCE ORG & EVENT IS SELECTED ** - DONE
 
-* Enable/Disable P&F
--- Surveys (surveys and session feedback) - DONE
+* Enable/Disable Surveys
 - bug, is out of sync with exp manager Settings > hide survey checkbox
+- Surveys (surveys and session feedback) - DONE
 - figure out how to display flashes/error messages if request fails - DONE
 
 * Send alert page
--- refactor for url structure change
--- add in all form fields
+- refactor for url structure change - DONE
+- add in all form fields
+- style form fields
 
 * Change back button to event#show with hamburger icon
+- links to show page with options
+* Display Event name on show page
 * Contact Support!!!!
 * Go To App
 * Live Polls & Ask a Question
+- show/hide
 * Error handling
 - be more specific in errors
 - styling
 * Add attendee
+* Edit polls & feedback
 * Styling
 * Deployment
 
