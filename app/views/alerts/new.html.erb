@@ -8,7 +8,7 @@
     <% end %>
   <% end %>
 
-  <%= form_tag(alerts_path, method: "post") do %>
+  <%= form_tag(organization_event_alerts_path, method: "post") do %>
     <div class="form-field">
       <%= label_tag(:title, "Subject", class: "form-label") %>
       <%= text_field_tag(:title, nil, class: "form-input") %>
