@@ -23,6 +23,14 @@ class PagesController < ApplicationController
 
   end
 
+  def select_org
+    #code
+  end
+
+  def select_event
+    #code
+  end
+
   def new
 
   end

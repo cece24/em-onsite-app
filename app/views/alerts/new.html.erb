@@ -1,0 +1,39 @@
+<%= link_to "Back", root_path %>
+
+<h3 class="small-title centered">Send Announcement</h3>
+
+<div class="">
+
+  <% if flash.any? %>
+    <% flash.each do |type, msg| %>
+      <p class="error-msg"><%= msg %></p>
+    <% end %>
+  <% end %>
+
+  <%= form_tag(alerts_path, method: "post") do %>
+    <div class="form-field">
+      <%= label_tag(:title, "Subject", class: "form-label") %>
+      <%= text_field_tag(:title, nil, class: "form-input") %>
+    </div>
+
+    <div class="form-field">
+      <%= label_tag(:content, "Message", class: "form-label") %>
+      <%= text_area_tag(:content, nil, class: "form-input") %>
+    </div>
+
+    <div class="submit-button-container">
+      <%= submit_tag("Send Announcement", class: "button") %>
+    </div>
+  <% end %>
+
+</div>
+
+
+<!-- "title": "Kitten Boop!",
+"content": "<p>Hello!</p>",
+"scheduled": false,
+"send_as_email": false,
+"recipient_type": "all",
+"people_group_ids": [],
+"send_as_push": false,
+"scheduled_date": nil -->

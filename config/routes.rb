@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   get '/sendalert', to: "pages#sendalert", as: "alert"
 
   resources :sessions, only: %i(create new destroy)
+  resources :alerts, only: %i(create new)
 end

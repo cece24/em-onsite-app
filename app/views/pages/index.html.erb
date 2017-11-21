@@ -4,7 +4,9 @@
 <br><br>
 <%= link_to "Create a New Session", new_page_path %>
 <br><br>
-<%= link_to "Send Alert", alert_path %>
+<%= link_to "Send Announcement", new_alert_path %>
+
+<%= link_to "Send Alert (Old)", alert_path %>
 
 <% if flash.any? %>
   <% flash.each do |type, msg| %>
