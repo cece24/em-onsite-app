@@ -14,7 +14,12 @@ Rails.application.routes.draw do
           patch :survey_show
         end
       end
-      resources :session_details
+      resources :session_details do
+        member do
+          post :question_enable
+          post :question_disable
+        end
+      end
     end
   end
 

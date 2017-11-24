@@ -18,6 +18,44 @@ class SessionDetailsController < ApplicationController
     end
   end
 
+  def question_enable
+    response = HTTParty.post("https://core.eventmobi.com/cms/v1/events/#{event_id}/session/toggle-ask-a-question",
+      :headers => exp_headers,
+      :body => {
+        "id" => session_id
+      }.to_json,
+      :timeout => 5,
+      :debug_output => $stdout
+    )
+
+    if response.code == 200
+      flash[:notice] = "This session is now accepting new questions."
+      redirect_to organization_event_session_details_url(organization_id: organization_id, id: event_id)
+    else
+      flash[:alert] = "Whoops! Something went wrong with your request."
+      redirect_to organization_event_session_details_url(organization_id: organization_id, id: event_id)
+    end
+  end
+
+  def question_disable
+    response = HTTParty.post("https://core.eventmobi.com/cms/v1/events/#{event_id}/session/toggle-ask-a-question",
+      :headers => exp_headers,
+      :body => {
+        "id" => session_id
+      }.to_json,
+      :timeout => 5,
+      :debug_output => $stdout
+    )
+
+    if response.code == 200
+      flash[:notice] = "This session is no longer accepting new questions."
+      redirect_to organization_event_session_details_url(organization_id: organization_id, id: event_id)
+    else
+      flash[:alert] = "Whoops! Something went wrong with your request."
+      redirect_to organization_event_session_details_url(organization_id: organization_id, id: event_id)
+    end
+  end
+
   private
 
   def organization_id
