@@ -12,16 +12,10 @@ class SessionDetailsController < ApplicationController
       sessions = JSON.parse(response.body)
 
       sessions["data"].each do |session|
-        poll_questions = get_poll_questions(session["id"])
-        if !poll_questions.empty?
-          session["poll_questions"] = true
-        else
-          session["poll_questions"] = false
-        end
+        session["poll_payload"] = get_poll_questions(session["id"])
       end
 
       @sessions = sessions["data"]
-
       puts @sessions
     else
       puts "Request error: #{response.code} #{response.message}"
@@ -78,14 +72,25 @@ class SessionDetailsController < ApplicationController
     if response.code == 200
       poll_question_data = JSON.parse(response.body)
       poll_questions = poll_question_data["data"]
-      return poll_questions
+
+      if !poll_questions.empty?
+        poll_payload = {}
+
+        poll_payload["question_ids"] = poll_questions.map do |question|
+          question["id"]
+        end
+
+        poll_payload["visible"] = poll_questions[0]["visible"]
+
+        return poll_payload
+      end
     else
       puts "Request error!"
     end
   end
 
   def poll_show
-    #code
+    # body is {"question_ids":[348574,348575],"visible":true}
   end
 
   def poll_hide
