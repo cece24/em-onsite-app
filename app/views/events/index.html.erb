@@ -1,5 +1,5 @@
 <div class="page-container">
-  <h3 class="small-title centered">Please select your event.</h3>
+  <h3 class="small-title">Please select your event.</h3>
 
   <% if @events.any? %>
     <div class="list-block-container">
@@ -7,7 +7,6 @@
         <div class="list-block">
           <%= link_to (organization_event_path(event["organization_id"],event["id"])), class: "list-link" do %>
             <h3 class="small-title"><%= event["name"] %></h3>
-            <span>Start Date: <%= event["start_date"] %></span>
           <% end %>
         </div>
       <% end %>

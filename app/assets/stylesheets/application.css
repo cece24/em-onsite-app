@@ -62,7 +62,6 @@
   font-weight: 600;
 }
 
-
 /* Main Nav Bar */
 .main-nav {
   position: fixed;
@@ -147,6 +146,11 @@
   margin-bottom: 32px;
 }
 
+.page-container {
+  max-width: 450px;
+  margin: auto;
+}
+
 
 /* Form Styling */
 .form-field {
@@ -212,7 +216,7 @@ input {
 .list-block {
   background-color: white;
   border-bottom: 1px solid #e8e8e8;
-  padding: 10px 30px;
+  padding: 5px 30px;
 }
 
 .list-link {
