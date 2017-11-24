@@ -189,6 +189,10 @@ input {
   padding-right: 100px;
 }
 
+.button-container {
+  margin-bottom: 10px;
+}
+
 .button {
   color: #fff;
   font-size: .9rem;

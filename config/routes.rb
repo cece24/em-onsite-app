@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'sessions#new'
 
-  resources :pages
   resources :sessions, only: %i(create new destroy)
 
   resources :organizations, only: %i(index) do
@@ -18,13 +17,11 @@ Rails.application.routes.draw do
         member do
           post :question_enable
           post :question_disable
+          post :poll_show
+          post :poll_hide
         end
       end
     end
   end
-
-  get '/access', to: "pages#access", as: "access"
-
-  get '/sendalert', to: "pages#sendalert", as: "alert"
 
 end

@@ -90,11 +90,43 @@ class SessionDetailsController < ApplicationController
   end
 
   def poll_show
-    # body is {"question_ids":[348574,348575],"visible":true}
+    payload = JSON.parse(params[:poll_payload])
+    payload["visible"] = true
+
+    response = HTTParty.post("https://core.eventmobi.com/cms/v1/events/#{event_id}/live-polls/questions/action/hide",
+      :headers => exp_headers,
+      :body => payload.to_json,
+      :timeout => 5,
+      :debug_output => $stdout
+    )
+
+    if response.code == 200
+      flash[:notice] = "Live polls for this session are now visible to attendees."
+      redirect_to organization_event_session_details_url(organization_id: organization_id, id: event_id)
+    else
+      flash[:alert] = "Whoops! Something went wrong with your request."
+      redirect_to organization_event_session_details_url(organization_id: organization_id, id: event_id)
+    end
   end
 
   def poll_hide
-    #code
+    payload = JSON.parse(params[:poll_payload])
+    payload["visible"] = false
+
+    response = HTTParty.post("https://core.eventmobi.com/cms/v1/events/#{event_id}/live-polls/questions/action/hide",
+      :headers => exp_headers,
+      :body => payload.to_json,
+      :timeout => 5,
+      :debug_output => $stdout
+    )
+
+    if response.code == 200
+      flash[:notice] = "Live polls for this session are now hidden from attendees."
+      redirect_to organization_event_session_details_url(organization_id: organization_id, id: event_id)
+    else
+      flash[:alert] = "Whoops! Something went wrong with your request."
+      redirect_to organization_event_session_details_url(organization_id: organization_id, id: event_id)
+    end
   end
 
   private
