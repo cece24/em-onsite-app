@@ -14,6 +14,7 @@ Rails.application.routes.draw do
           patch :survey_show
         end
       end
+      resources :session_details
     end
   end
 

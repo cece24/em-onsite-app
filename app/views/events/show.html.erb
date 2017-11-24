@@ -11,6 +11,8 @@
   <br><br>
   <%= link_to "Surveys", organization_event_surveys_path(organization_id: @organization_id, event_id: @event_id) %>
   <br><br>
+  <%= link_to "Sessions", organization_event_sessiondetails_path(organization_id: @organization_id, event_id: @event_id) %>
+  <br><br>
   <%= link_to "Change Event", organization_events_path(organization_id: @organization_id, id: @event_id) %>
   <br><br>
   <%= link_to "Log Out", session_path(session[:exp_user]), method: :delete, data: { confirm: "Are you sure you want to log out?"} %>
