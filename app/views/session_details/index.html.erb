@@ -1,5 +1,22 @@
 <div class="page-container">
   <h3 class="small-title">Please select the session.</h3>
 
+  <% @sessions.each do |session| %>
+    <div class="list-card">
+      <p>
+        <h3 class="small-title"><%= session["name"] %></h3>
+      </p>
+      <p class="detail-text">
+        <span class="bold">Date:</span>
+        <span><%= session["date"] %></span>
+      </p>
+
+      <p class="detail-text">
+        <span class="bold">Time:</span>
+        <span><%= session["start_time"] %> - <%= session["end_time"] %></span>
+      </p>
+
+    </div>
+  <% end %>
 
 </div>
