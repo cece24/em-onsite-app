@@ -1,9 +1,17 @@
+<div class="menu-icon">
+  <%= link_to "menu", organization_event_path(organization_id: @organization_id, id: @event_id), class: "nav-icon-area" %>
+  <i class="fa fa-bars nav-icon" aria-hidden="true"></i>
+</div>
+
 <div class="page-container">
+
   <h3 class="small-title centered">What do you need help with?</h3>
 
   <%= link_to "Send Announcement", new_organization_event_alert_path(organization_id: @organization_id, event_id: @event_id) %>
   <br><br>
   <%= link_to "Surveys", organization_event_surveys_path(organization_id: @organization_id, event_id: @event_id) %>
+  <br><br>
+  <%= link_to "Change Event", organization_events_path(organization_id: @organization_id, id: @event_id) %>
   <br><br>
   <%= link_to "Log Out", session_path(session[:exp_user]), method: :delete, data: { confirm: "Are you sure you want to log out?"} %>
   <br><br>

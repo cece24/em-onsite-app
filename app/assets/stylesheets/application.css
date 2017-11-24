@@ -94,7 +94,7 @@
   font-weight: 200;
 }
 
-.arrow-icon {
+.nav-icon {
   position: absolute;
   left: 10px;
   line-height: 50px;
@@ -103,8 +103,12 @@
   font-style: normal;
 }
 
+.menu-icon {
+  color: #fff;
+}
+
 /* larger div container back link, for easy tapping */
-.back-button {
+.nav-icon-area {
   display: inline-block;
   width: 60px;
   line-height: 50px;

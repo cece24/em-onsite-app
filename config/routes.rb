@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'pages#index'
+  root 'sessions#new'
 
   resources :pages
   resources :sessions, only: %i(create new destroy)

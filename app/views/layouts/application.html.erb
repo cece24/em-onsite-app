@@ -5,16 +5,20 @@
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://use.fontawesome.com/1b2845ba6c.js"></script>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
     <% unless controller_name == "sessions" %>
       <nav>
         <div class="main-nav">
-          <%= link_to "back", request.referer.present? ? request.referer : root_path, class: "back-button" %>
-          <i class="fa fa-arrow-left arrow-icon" aria-hidden="true"></i>
+
+          <% if request.url == root_url || request.url == organizations_url || request.url == organization_events_url %>
+            <%= link_to "back", request.referer.present? ? request.referer : root_path, class: "nav-icon-area" %>
+            <i class="fa fa-arrow-left nav-icon" aria-hidden="true"></i>
+          <% end %>
+
           <div class="centered nav-title-container">
             <img src="https://eventmobi.com/api/events/9443/documents/download/3ffcd4ce-20bf-486e-aefc-1446ddd05023.png/as/logo_text_only.png" alt="EventMobi" class="small-logo-container">
             <span class="title-onsite">onsite</span>

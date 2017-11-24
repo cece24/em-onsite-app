@@ -25,6 +25,8 @@ TO DO:
 - style form fields
 
 * Change back button to event#show with hamburger icon
+* Event selection page - style start date
+* Disable Turbolinks
 - links to show page with options
 * Display Event name on show page
 * Contact Support!!!!
