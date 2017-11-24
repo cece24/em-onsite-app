@@ -7,32 +7,27 @@
 
   <h3 class="small-title centered">What do you need help with?</h3>
 
-  <%= link_to "Send Announcement", new_organization_event_alert_path(organization_id: @organization_id, event_id: @event_id) %>
-  <br><br>
-  <%= link_to "Surveys", organization_event_surveys_path(organization_id: @organization_id, event_id: @event_id) %>
-  <br><br>
-  <%= link_to "Sessions", organization_event_session_details_path(organization_id: @organization_id, event_id: @event_id) %>
-  <br><br>
-  <%= link_to "Change Event", organization_events_path(organization_id: @organization_id, id: @event_id) %>
-  <br><br>
-  <%= link_to "Log Out", session_path(session[:exp_user]), method: :delete, data: { confirm: "Are you sure you want to log out?"} %>
-  <br><br>
-  <% if flash.any? %>
-    <% flash.each do |type, msg| %>
-      <p class="error-msg"><%= msg %></p>
-    <% end %>
-  <% end %>
+  <div class="list-block-container">
 
-  <% if @sessions %>
-    <% @sessions.each do |session| %>
-      <h3><%= session["name"]%></h3>
-      <%= session["description"].html_safe %>
-      <%= link_to "Edit", edit_page_path(session["id"]) %>
-    <% end %>
-  <% end %>
+    <div class="list-block">
+      <%= link_to "Send Announcement", new_organization_event_alert_path(organization_id: @organization_id, event_id: @event_id), class: "list-link" %>
+    </div>
 
-  <p>old</p>
-  <%= link_to "Access CMS Page", access_path %>
+    <div class="list-block">
+      <%= link_to "Manage Surveys", organization_event_surveys_path(organization_id: @organization_id, event_id: @event_id), class: "list-link" %>
+    </div>
 
-  <%= link_to "Create a New Session", new_page_path %>
+    <div class="list-block">
+      <%= link_to "Manage Live Polls & Ask a Question", organization_event_session_details_path(organization_id: @organization_id, event_id: @event_id), class: "list-link" %>
+    </div>
+
+    <div class="list-block">
+      <%= link_to "Change Event", organization_events_path(organization_id: @organization_id, id: @event_id), class: "list-link" %>
+    </div>
+
+    <div class="list-block">
+      <%= link_to "Log Out", session_path(session[:exp_user]), method: :delete, data: { confirm: "Are you sure you want to log out?"}, class: "list-link" %>
+    </div>
+
+  </div>
 </div>
