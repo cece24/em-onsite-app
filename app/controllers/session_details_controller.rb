@@ -10,7 +10,19 @@ class SessionDetailsController < ApplicationController
 
     if response.code == 200
       sessions = JSON.parse(response.body)
+
+      sessions["data"].each do |session|
+        poll_questions = get_poll_questions(session["id"])
+        if !poll_questions.empty?
+          session["poll_questions"] = true
+        else
+          session["poll_questions"] = false
+        end
+      end
+
       @sessions = sessions["data"]
+
+      puts @sessions
     else
       puts "Request error: #{response.code} #{response.message}"
       flash.now[:alert] = "Whoops! Something went wrong with your request."
@@ -54,6 +66,30 @@ class SessionDetailsController < ApplicationController
       flash[:alert] = "Whoops! Something went wrong with your request."
       redirect_to organization_event_session_details_url(organization_id: organization_id, id: event_id)
     end
+  end
+
+  def get_poll_questions(session_detail_id)
+    response = HTTParty.get("https://core.eventmobi.com/cms/v1/events/#{event_id}/live-polls/questions?session_id=#{session_detail_id}&sort=order",
+      :headers => exp_headers,
+      :timeout => 5,
+      :debug_output => $stdout
+    )
+
+    if response.code == 200
+      poll_question_data = JSON.parse(response.body)
+      poll_questions = poll_question_data["data"]
+      return poll_questions
+    else
+      puts "Request error!"
+    end
+  end
+
+  def poll_show
+    #code
+  end
+
+  def poll_hide
+    #code
   end
 
   private
