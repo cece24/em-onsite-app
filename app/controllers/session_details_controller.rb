@@ -1,6 +1,7 @@
 class SessionDetailsController < ApplicationController
   def index
-    event_id = params[:event_id]
+    @event_id = event_id
+    @organization_id = organization_id
 
     response = HTTParty.get("https://core.eventmobi.com/cms/v1/events/#{event_id}/session-details?limit=50&offset=0&sort=date,start_time,name",
       :headers => exp_headers,
