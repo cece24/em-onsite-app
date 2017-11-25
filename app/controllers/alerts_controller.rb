@@ -2,12 +2,11 @@ require "time"
 
 class AlertsController < ApplicationController
   def new
-    #code
+    @event_id = event_id
+    @organization_id = organization_id
   end
 
   def create
-    event_id = params[:event_id]
-    organization_id = params[:organization_id]
 
     if params[:scheduled] == "true"
       date = params[:date__scheduled_date].concat(params[:time__scheduled_date]).join(" ")
@@ -51,6 +50,16 @@ class AlertsController < ApplicationController
         render :new
       end
     end
+  end
+
+  private
+
+  def organization_id
+    organization_id = params[:organization_id]
+  end
+
+  def event_id
+    event_id = params[:event_id]
   end
 
 end
