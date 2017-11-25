@@ -1,3 +1,5 @@
+require "time"
+
 class AlertsController < ApplicationController
   def new
     #code
@@ -7,8 +9,9 @@ class AlertsController < ApplicationController
     event_id = params[:event_id]
     organization_id = params[:organization_id]
 
-    if params[:scheduled] == true
-      scheduled_date = params[:date__scheduled_date].concat(params[:time__scheduled_date]).join(" ")
+    if params[:scheduled] == "true"
+      date = params[:date__scheduled_date].concat(params[:time__scheduled_date]).join(" ")
+      scheduled_date = Time.parse(date).utc
     else
       scheduled_date = nil
     end
