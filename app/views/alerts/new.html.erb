@@ -43,8 +43,8 @@
       <%= label_tag(:send_as_email, "Send Email") %>
     </div>
 
-    <div class="submit-button-container">
-      <%= submit_tag("Send Announcement", class: "green button") %>
+    <div class="">
+      <%= submit_tag("Send Announcement", { class: "green button", data: { confirm: "You are about to send this announcement to all users of the event app. Are you sure you want to send this announcement?"}}) %>
     </div>
   <% end %>
 
