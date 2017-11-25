@@ -7,6 +7,12 @@ class AlertsController < ApplicationController
     event_id = params[:event_id]
     organization_id = params[:organization_id]
 
+    if params[:scheduled] == true
+      scheduled_date = params[:date__scheduled_date].concat(params[:time__scheduled_date]).join(" ")
+    else
+      scheduled_date = nil
+    end
+
     if params[:title] == "" || params[:content] == ""
       flash.now[:alert] = "Please fill in all required fields."
       render :new
@@ -19,20 +25,20 @@ class AlertsController < ApplicationController
         :body => {
           "title": params[:title],
           "content": params[:content],
-          "scheduled": false,
-          "send_as_email": false,
+          "scheduled": params[:scheduled],
+          "send_as_email": params[:send_as_email],
           "recipient_type": "all",
           "people_group_ids": [],
           "send_as_push": false,
-          "scheduled_date": nil
+          "scheduled_date": scheduled_date
         }.to_json,
         :timeout => 5,
         :debug_output => $stdout
       )
 
       if response.code == 201
-        flash[:notice] = "The alert has been sent!"
-        redirect_to organization_event_url(organization_id: organization_id, id: event_id)
+        flash.keep[:notice] = "The alert has been sent!"
+        render :new
       else
         flash[:alert] = "Sorry, there was a problem sending the alert. Please try again!"
         render :new

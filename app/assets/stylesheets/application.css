@@ -168,8 +168,38 @@
     margin-bottom: .4em;
 }
 
-input {
+#date__scheduled_date {
+  width: 40%;
+}
+
+#time__scheduled_date {
+  width: 30%;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
   width: 100%;
+}
+
+input.inline {
+  display: inline-block;
+}
+
+
+span.between-inputs {
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  border: 1px solid #bbb;
+  margin-right: 6px;
 }
 
 .form-input {
