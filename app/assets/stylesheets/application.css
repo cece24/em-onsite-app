@@ -62,6 +62,10 @@
   font-weight: 600;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .detail-text {
   font-size: 1.0rem;
   font-weight: 300;
@@ -183,6 +187,9 @@ h3.event-title {
   margin: auto;
 }
 
+.footer-support-link {
+  padding: 10px 0 10px 0;
+}
 
 /* Form Styling */
 .form-field {
@@ -343,7 +350,7 @@ div.list-feature {
   border-radius: 13px;
   border: 1px solid #bbb;
   width: 85%;
-  height: 270px;
+  height: 280px;
   max-width: 350px;
   padding: 0 10px 15px 10px;
   position: absolute;
