@@ -13,12 +13,12 @@
         <h3 class="small-title"><%= session["name"] %></h3>
       </p>
       <p class="detail-text">
-        <span class="bold">Date:</span>
-        <span><%= session["date"] %></span>
+        <i class="fa fa-calendar-o" aria-hidden="true"></i>
+        <span><%= Date.parse(session["date"]).strftime("%A, %B %e, %Y") %></span>
       </p>
 
       <p class="detail-text">
-        <span class="bold">Time:</span>
+        <i class="fa fa-clock-o" aria-hidden="true"></i>
         <span><%= session["start_time"] %> - <%= session["end_time"] %></span>
       </p>
 

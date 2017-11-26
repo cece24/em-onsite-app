@@ -67,6 +67,10 @@
   font-weight: 200;
 }
 
+.detail-text i {
+  margin-right: 5px;
+}
+
 .center-text {
   text-align: center;
 }
@@ -311,7 +315,6 @@ div.list-feature {
   background-color: white;
   border: 1px solid #bbb;
   border-radius: 5px;
-  padding: 10px;
-  padding-top: 0px;
+  padding: 0px 15px 10px 15px;
   margin-bottom: 10px
 }
