@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :ensure_authentication
 
   def exp_user
     session[:exp_user]
@@ -12,6 +13,13 @@ class ApplicationController < ActionController::Base
       "Content-Type" => "application/json",
       "Cookie" => exp_user
     }
+  end
+
+  def ensure_authentication
+    if !session[:exp_user]
+      redirect_to new_session_url
+      flash[:alert] = "Please log in."
+    end
   end
 
 end

@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  skip_before_action :ensure_authentication
+  before_action :redirect_if_logged_in
+
   def new
     #code
   end
@@ -34,5 +37,13 @@ class SessionsController < ApplicationController
     session[:exp_user] = nil
 
     redirect_to new_session_url
+  end
+
+  private
+
+  def redirect_if_logged_in
+    if session[:exp_user]
+      redirect_to organizations_url
+    end
   end
 end
