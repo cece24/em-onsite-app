@@ -40,13 +40,13 @@ class AlertsController < ApplicationController
 
       if response.code == 201
         if params[:scheduled] == "true"
-          flash[:notice] = "The announcement has been scheduled!"
+          flash.now[:notice] = "The announcement has been scheduled!"
         else
-          flash[:notice] = "The announcement has been sent!"
+          flash.now[:notice] = "The announcement has been sent!"
         end
         render :new
       else
-        flash[:alert] = "Sorry, there was a problem sending the alert. Please try again!"
+        flash.now[:alert] = "Sorry, there was a problem sending the alert. Please try again!"
         render :new
       end
     end
