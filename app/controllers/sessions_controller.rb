@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :ensure_authentication
-  before_action :redirect_if_logged_in
+  before_action :redirect_if_logged_in, except: :destroy
 
   def new
     #code
@@ -36,7 +36,7 @@ class SessionsController < ApplicationController
   def destroy
     session[:exp_user] = nil
 
-    redirect_to new_session_url
+    redirect_to new_sessions_url
   end
 
   private

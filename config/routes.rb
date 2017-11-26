@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'sessions#new'
 
-  resources :sessions, only: %i(create new destroy)
+  resource :sessions, only: %i(create new destroy)
 
   resources :organizations, only: %i(index) do
     resources :events, only: %i(index show) do

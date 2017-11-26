@@ -21,7 +21,7 @@
     </div>
 
     <div class="list-block">
-      <%= link_to "Log Out", session_path(session[:exp_user]), method: :delete, data: { confirm: "Are you sure you want to log out?"}, class: "list-link" %>
+      <%= link_to "Log Out", sessions_path, method: :delete, data: { confirm: "Are you sure you want to log out?"}, class: "list-link" %>
     </div>
 
   </div>
