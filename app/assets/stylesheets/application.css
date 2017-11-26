@@ -247,19 +247,22 @@ input[type="checkbox"] {
 
 .button {
   color: #fff;
-  font-size: 1.0rem;
+  font-size: .9rem;
   text-decoration: none;
   border: none;
   border-radius: 15px;
   margin: 0 5px 0 0;
-  padding: 10px 30px;
+  padding: 6px 30px;
   transition: background-color .2s;
   -webkit-appearance: none;
   display: inline-block;
 }
 
-.full-width {
+.list-options {
   width: 100%;
+  padding: 11px 30px;
+  font-size: 1.0rem;
+  border-radius: 9px;
 }
 
 .blue {
