@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
   def ensure_authentication
     if !session[:exp_user]
-      redirect_to new_session_url
+      redirect_to new_sessions_url
       flash[:alert] = "Please log in."
     end
   end
