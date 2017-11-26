@@ -25,6 +25,13 @@
       </div>
     <% end %>
 
+    <%= link_to("https://eventmobi.com/#{@event_data["shortcode"]}", class: "list-link", target: :_blank) do %>
+      <div class="list-block list-feature">
+        <i class="fa fa-external-link icon-feature" aria-hidden="true"></i>
+        <span class="small-title">View App</span>
+      </div>
+    <% end %>
+
     <%= link_to(organization_events_path(organization_id: @organization_id), class: "list-link") do %>
       <div class="list-block list-feature">
         <i class="fa fa-arrow-circle-o-left icon-feature" aria-hidden="true"></i>
