@@ -73,7 +73,7 @@
 
 .small-text {
   font-size: 0.9rem;
-  font-weight: 200;
+  font-weight: 300;
 }
 
 .center-text {
@@ -345,14 +345,13 @@ div.list-feature {
   width: 85%;
   height: 270px;
   max-width: 350px;
-  padding: 0 10px 10px 10px;
+  padding: 0 10px 13px 10px;
   position: absolute;
   margin: auto;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  /*display: none;*/
 }
 
 .contact-link {
