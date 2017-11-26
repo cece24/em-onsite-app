@@ -79,7 +79,6 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
   database: em-onsite-app_production
-  username: em-onsite-app
-  password: <%= ENV['EM-ONSITE-APP_DATABASE_PASSWORD'] %>
+  host: localhost

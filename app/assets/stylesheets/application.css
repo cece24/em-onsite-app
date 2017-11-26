@@ -129,9 +129,10 @@
 
 /* Log in Container */
 
-@media screen and (min-width: 640px)
-.log-in-container {
-  padding: 40px;
+@media screen and (min-width: 640px) {
+  .log-in-container {
+    padding: 40px;
+  }
 }
 
 .log-in-container {
@@ -140,9 +141,10 @@
   padding: 35px 25px;
 }
 
-@media screen and (min-width: 640px)
-.large-container {
-  margin-top: 80px;
+@media screen and (min-width: 640px) {
+  .large-container {
+    margin-top: 80px;
+  }
 }
 
 .large-container {
