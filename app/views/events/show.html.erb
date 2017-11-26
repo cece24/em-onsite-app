@@ -4,25 +4,41 @@
 
   <div class="list-block-container">
 
-    <div class="list-block">
-      <%= link_to "Send Announcement", new_organization_event_alert_path(organization_id: @organization_id, event_id: @event_id), class: "list-link" %>
-    </div>
+    <%= link_to(new_organization_event_alert_path(organization_id: @organization_id, event_id: @event_id), class: "list-link") do %>
+      <div class="list-block list-feature">
+        <i class="fa fa-bullhorn icon-feature" aria-hidden="true"></i>
+        <span class="small-title">Send Announcement</span>
+      </div>
+    <% end %>
 
-    <div class="list-block">
-      <%= link_to "Manage Surveys", organization_event_surveys_path(organization_id: @organization_id, event_id: @event_id), class: "list-link" %>
-    </div>
+    <%= link_to(organization_event_surveys_path(organization_id: @organization_id, event_id: @event_id), class: "list-link") do %>
+      <div class="list-block list-feature">
+        <i class="fa fa-clipboard icon-feature" aria-hidden="true"></i>
+        <span class="small-title">Manage Surveys</span>
+      </div>
+    <% end %>
 
-    <div class="list-block">
-      <%= link_to "Manage Live Polls & Ask a Question", organization_event_session_details_path(organization_id: @organization_id, event_id: @event_id), class: "list-link" %>
-    </div>
+    <%= link_to(organization_event_session_details_path(organization_id: @organization_id, event_id: @event_id), class: "list-link") do %>
+      <div class="list-block list-feature">
+        <i class="fa fa-calendar icon-feature" aria-hidden="true"></i>
+        <span class="small-title">Manage Live Polls &amp; Questions</span>
+      </div>
+    <% end %>
 
-    <div class="list-block">
-      <%= link_to "Change Event", organization_events_path(organization_id: @organization_id), class: "list-link" %>
-    </div>
+    <%= link_to(organization_events_path(organization_id: @organization_id), class: "list-link") do %>
+      <div class="list-block list-feature">
+        <i class="fa fa-arrow-circle-o-left icon-feature" aria-hidden="true"></i>
+        <span class="small-title">Change Event</span>
+      </div>
+    <% end %>
 
-    <div class="list-block">
-      <%= link_to "Log Out", sessions_path, method: :delete, data: { confirm: "Are you sure you want to log out?"}, class: "list-link" %>
-    </div>
+    <%= link_to(sessions_path, method: :delete, data: { confirm: "Are you sure you want to log out?"}, class: "list-link") do %>
+      <div class="list-block list-feature">
+        <i class="fa fa-sign-out icon-feature" aria-hidden="true"></i>
+        <span class="small-title">Log Out</span>
+      </div>
+    <% end %>
 
   </div>
+
 </div>
