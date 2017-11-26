@@ -17,6 +17,9 @@
           <% if request.url == root_url || request.url == organizations_url || request.url == organization_events_url %>
             <%= link_to "back", request.referer.present? ? request.referer : root_path, class: "nav-icon-area" %>
             <i class="fa fa-arrow-left nav-icon" aria-hidden="true"></i>
+          <% else %>
+            <%= link_to "menu", organization_event_path(organization_id: params[:organization_id], id: params[:event_id].present? ? params[:event_id] : params[:id]), class: "nav-icon-area" %>
+            <i class="fa fa-bars nav-icon" aria-hidden="true"></i>
           <% end %>
 
           <div class="centered nav-title-container">
