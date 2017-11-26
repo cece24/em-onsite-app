@@ -32,5 +32,19 @@
     <% end %>
 
     <%= yield %>
+
+    <div class="contact-support-modal centered">
+      <h3 class="small-title center-text">Need Help?</h3>
+      <i class="fa fa-times contact-close" aria-hidden="true"></i>
+      <p class="center-text">We're here for you! Please feel free to contact support by:</p>
+      <p class="center-text">Phone: <a href="tel:1-888-296-8415" class="contact-link">1-888-296-8415 ext. 2</a></p>
+      <p class="center-text">Email: <%= link_to("support@eventmobi.com", "mailto:support@eventmobi.com", class: "contact-link") %></p>
+      <p class="center-text">Live Chat: <%= link_to("Click to start chat", "", class: "contact-link") %></p>
+      <p class="small-text center-text">
+        <span>Hours of Availability: Mon - Fri, 3am-8pm EST</span>
+        <br>
+        <span>Sat - Sun, 9am-5pm EST</span></p>
+    </div>
+
   </body>
 </html>

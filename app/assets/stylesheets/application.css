@@ -71,6 +71,11 @@
   margin-right: 5px;
 }
 
+.small-text {
+  font-size: 0.9rem;
+  font-weight: 200;
+}
+
 .center-text {
   text-align: center;
 }
@@ -312,7 +317,6 @@ div.list-feature {
   padding-right: 8px;
 }
 
-
 /* used in surveys */
 .list-card {
   background-color: white;
@@ -320,4 +324,27 @@ div.list-feature {
   border-radius: 5px;
   padding: 0px 15px 10px 15px;
   margin-bottom: 10px
+}
+
+/* Contact Support Modal */
+
+.contact-support-modal {
+  background-color: #fff;
+  border-radius: 13px;
+  border: 1px solid #bbb;
+  width: 85%;
+  max-width: 350px;
+  padding: 0 10px 10px 10px;
+  position: relative;
+}
+
+.contact-link {
+  text-decoration: none;
+  color: #0093c7;
+}
+
+.contact-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
 }
