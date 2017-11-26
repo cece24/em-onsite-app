@@ -19,9 +19,9 @@
         </p>
 
         <% if survey["visible"] == false %>
-          <%= button_to "Show", survey_show_organization_event_survey_path(id: survey["id"]), method: :patch, params: { organization_id: @organization_id, event_id: survey["event_id"], id: survey["id"] }, class: "blue button" %>
+          <%= button_to "Show", survey_show_organization_event_survey_path(id: survey["id"]), method: :patch, params: { organization_id: @organization_id, event_id: survey["event_id"], id: survey["id"] }, class: "blue button full-width" %>
         <% elsif survey["visible"] == true %>
-          <%= button_to "Hide", survey_hide_organization_event_survey_path(id: survey["id"]), method: :patch, params: { organization_id: @organization_id, event_id: survey["event_id"], id: survey["id"] }, class: "green button" %>
+          <%= button_to "Hide", survey_hide_organization_event_survey_path(id: survey["id"]), method: :patch, params: { organization_id: @organization_id, event_id: survey["event_id"], id: survey["id"] }, class: "green button full-width" %>
         <% end %>
       </div>
     <% end %>
@@ -40,9 +40,9 @@
         </p>
 
         <% if survey["visible"] == false %>
-          <%= button_to "Show", survey_show_organization_event_survey_path(id: survey["id"]), method: :patch, params: { organization_id: @organization_id, event_id: survey["event_id"], id: survey["id"] }, class: "blue button" %>
+          <%= button_to "Show", survey_show_organization_event_survey_path(id: survey["id"]), method: :patch, params: { organization_id: @organization_id, event_id: survey["event_id"], id: survey["id"] }, class: "blue button full-width" %>
         <% elsif survey["visible"] == true %>
-          <%= button_to "Hide", survey_hide_organization_event_survey_path(id: survey["id"]), method: :patch, params: { organization_id: @organization_id, event_id: survey["event_id"], id: survey["id"] }, class: "green button" %>
+          <%= button_to "Hide", survey_hide_organization_event_survey_path(id: survey["id"]), method: :patch, params: { organization_id: @organization_id, event_id: survey["event_id"], id: survey["id"] }, class: "green button full-width" %>
         <% end %>
       </div>
     <% end %>

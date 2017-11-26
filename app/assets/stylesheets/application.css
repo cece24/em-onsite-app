@@ -230,10 +230,14 @@ input[type="checkbox"] {
   border: none;
   border-radius: 15px;
   margin: 0 5px 0 0;
-  padding: 6px 16px;
+  padding: 6px 30px;
   transition: background-color .2s;
   -webkit-appearance: none;
   display: inline-block;
+}
+
+.full-width {
+  width: 100%;
 }
 
 .blue {

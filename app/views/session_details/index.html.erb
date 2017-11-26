@@ -7,7 +7,7 @@
     <% end %>
   <% end %>
 
-  <h3 class="small-title">Change Session Settings: Ask a Question, Live Polls</h3>
+  <h3 class="small-title">Session Settings: Ask a Question, Live Polls</h3>
 
   <% @sessions.each do |session| %>
     <div class="list-card">
@@ -26,18 +26,18 @@
 
       <div class="button-container">
         <% if session["allow_ask_a_question"] == true %>
-          <%= button_to "Disable Questions", question_disable_organization_event_session_detail_path(id: session["id"]), method: :post, params: { event_id: session["event_id"] }, class: "blue button" %>
+          <%= button_to "Disable Questions", question_disable_organization_event_session_detail_path(id: session["id"]), method: :post, params: { event_id: session["event_id"] }, class: "blue button full-width" %>
         <% elsif session["allow_ask_a_question"] == false %>
-          <%= button_to "Enable Questions", question_enable_organization_event_session_detail_path(id: session["id"]), method: :post, params: { event_id: session["event_id"] }, class: "green button" %>
+          <%= button_to "Enable Questions", question_enable_organization_event_session_detail_path(id: session["id"]), method: :post, params: { event_id: session["event_id"] }, class: "green button full-width" %>
         <% end %>
       </div>
 
       <div class="button-container">
         <% if session["poll_payload"] %>
           <% if session["poll_payload"]["visible"] == true %>
-            <%= button_to "Hide Live Polls", poll_hide_organization_event_session_detail_path(id: session["id"]), method: :post, params: { event_id: session["event_id"], poll_payload: session["poll_payload"].to_json }, class: "blue button" %>
+            <%= button_to "Hide Live Polls", poll_hide_organization_event_session_detail_path(id: session["id"]), method: :post, params: { event_id: session["event_id"], poll_payload: session["poll_payload"].to_json }, class: "blue button full-width" %>
           <% elsif session["poll_payload"]["visible"] == false %>
-            <%= button_to "Show Live Polls", poll_show_organization_event_session_detail_path(id: session["id"]), method: :post, params: { event_id: session["event_id"], poll_payload: session["poll_payload"].to_json }, class: "green button" %>
+            <%= button_to "Show Live Polls", poll_show_organization_event_session_detail_path(id: session["id"]), method: :post, params: { event_id: session["event_id"], poll_payload: session["poll_payload"].to_json }, class: "green button full-width" %>
           <% end %>
         <% end %>
       </div>
