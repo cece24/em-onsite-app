@@ -9,7 +9,7 @@ class AlertsController < ApplicationController
   def create
 
     if params[:scheduled] == "true"
-      date = params[:date__scheduled_date].concat(params[:time__scheduled_date]).join(" ")
+      date = params[:date__scheduled_date].concat(params[:time__scheduled_date]).join(" ").concat(" EST")
       scheduled_date = Time.parse(date).utc
     else
       scheduled_date = nil
