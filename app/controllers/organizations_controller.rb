@@ -12,7 +12,7 @@ class OrganizationsController < ApplicationController
     else
       puts "Request error: #{response.code} #{response.message}"
       flash.now[:alert] = "Whoops! Something went wrong with your request."
-      redirect_to new_session_url
+      redirect_to new_sessions_url
     end
   end
 end

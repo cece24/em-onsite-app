@@ -67,6 +67,22 @@
   font-weight: 200;
 }
 
+.center-text {
+  text-align: center;
+}
+
+h3.event-title {
+  font-size: 1.6rem;
+  font-weight: 300;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  /*background-color: white;
+  border-bottom: 1px solid #e8e8e8;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  margin: 1px;*/
+}
+
 /* Main Nav Bar */
 .main-nav {
   position: fixed;
@@ -281,6 +297,8 @@ input[type="checkbox"] {
 div.list-feature {
   padding-top: 20px;
   padding-bottom: 20px;
+  background-color: #575757;
+  color: white;
 }
 
 .icon-feature {
