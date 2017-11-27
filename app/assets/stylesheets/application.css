@@ -324,6 +324,10 @@ div.list-feature {
   padding-right: 8px;
 }
 
+i.fa-question {
+  padding-right: 13px;
+}
+
 /* used in surveys */
 .list-card {
   background-color: white;

@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('js is werkin');
 
   var contactSupportLink = document.querySelector(".contact-support");
   var contactModal = document.querySelector(".modal-container");

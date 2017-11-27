@@ -32,12 +32,12 @@
       </div>
     <% end %>
 
-    <%= link_to("", class: "list-link") do %>
-      <div class="list-block list-feature contact-support">
+    <div class="list-link">
+      <div class="list-block list-feature">
         <i class="fa fa-question icon-feature" aria-hidden="true"></i>
-        <span class="small-title">Contact Support</span>
+        <span class="small-title contact-support">Contact Support</span>
       </div>
-    <% end %>
+    </div>
 
     <%= link_to(organization_events_path(organization_id: @organization_id), class: "list-link") do %>
       <div class="list-block list-feature">
