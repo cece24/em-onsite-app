@@ -4,11 +4,11 @@
   <% if @organizations.any? %>
     <div class="list-block-container">
       <% @organizations.each do |organization| %>
-        <div class="list-block">
-          <%= link_to (organization_events_path(organization["id"])), class: "list-link" do %>
-            <h3 class="small-title"><%= organization["name"] %></h3>
-          <% end %>
-        </div>
+        <%= link_to (organization_events_path(organization["id"])), class: "list-link" do %>
+          <div class="list-block list-event-org">
+              <h3 class="small-title"><%= organization["name"] %></h3>
+          </div>
+        <% end %>
       <% end %>
     </div>
   <% end %>

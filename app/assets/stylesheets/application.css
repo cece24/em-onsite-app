@@ -299,6 +299,16 @@ input[type="checkbox"] {
   padding: 5px 30px;
 }
 
+div.list-event-org:hover {
+  background-color: #b5d6fd;
+  color: #0093c7;
+}
+
+div.list-event-org:active {
+  background-color: #b5d6fd;
+  color: #0093c7;
+}
+
 .list-link {
   text-decoration: none;
   color: #575757;
@@ -318,6 +328,14 @@ div.list-feature {
   padding-bottom: 20px;
   background-color: #575757;
   color: white;
+}
+
+div.list-feature:hover {
+  background-color: #A9A9A9;
+}
+
+div.list-feature:active {
+  background-color: #A9A9A9;
 }
 
 .icon-feature {
