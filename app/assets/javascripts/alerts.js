@@ -3,8 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
   var scheduleAlertOptions = document.querySelector('.schedule-alert-options');
   var sendButton = document.querySelector('input[name="commit"]');
 
-  console.log('alerts.js at werk');
-
   scheduleAlertOptions.style.display = "none";
 
   scheduleCheckbox.addEventListener('change', function() {

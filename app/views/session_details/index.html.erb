@@ -25,10 +25,20 @@
       <div class="button-container">
         <% if session["allow_ask_a_question"] == true %>
           <%= button_to "Disable Questions", question_disable_organization_event_session_detail_path(id: session["id"]), method: :post, params: { event_id: session["event_id"] }, class: "blue button list-options" %>
+          <br>
+          <%= link_to "Moderate", "#{session["question_moderation_link"]}", class: "blue button list-options", target: :_blank %>
         <% elsif session["allow_ask_a_question"] == false %>
           <%= button_to "Enable Questions", question_enable_organization_event_session_detail_path(id: session["id"]), method: :post, params: { event_id: session["event_id"] }, class: "green button list-options" %>
         <% end %>
       </div>
+
+      <div class="button-container">
+        <p class="detail-text">
+          Questions Received:
+        </p>
+      </div>
+
+      <hr>
 
       <div class="button-container">
         <% if session["poll_payload"] %>

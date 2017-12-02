@@ -1,3 +1,5 @@
+require 'digest'
+
 class SessionDetailsController < ApplicationController
   def index
     @event_id = event_id
@@ -14,6 +16,7 @@ class SessionDetailsController < ApplicationController
 
       sessions["data"].each do |session|
         session["poll_payload"] = get_poll_questions(session["id"])
+        session["question_moderation_link"] = "https://experience.eventmobi.com/event/#{event_id}/question//moderate-live-results/#{Digest::SHA256.hexdigest "#{event_id},#{session["id"]}"}/ask_a_question/#{session["id"]}"
       end
 
       @sessions = sessions["data"]
