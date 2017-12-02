@@ -26,14 +26,16 @@
       <%= label_tag(:scheduled, "Schedule Announcement") %>
     </div>
 
-    <p>Data and Time to Send Announcement</p>
+    <div class="schedule-alert-options">
+      <p>Date and Time to Send Announcement</p>
 
-    <div class="form-field">
-      <%= date_field(:date__scheduled_date, nil, class: "form-input inline ") %>
+      <div class="form-field">
+        <%= date_field(:date__scheduled_date, nil, class: "form-input inline ") %>
 
-    <span class="between-inputs"> at </span>
+        <span class="between-inputs"> at </span>
 
-      <%= time_field(:time__scheduled_date, nil, class: "form-input inline") %>
+        <%= time_field(:time__scheduled_date, nil, class: "form-input inline") %>
+      </div>
     </div>
 
     <h3 class="small-title">Options</h3>
