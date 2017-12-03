@@ -5,7 +5,7 @@
     <% end %>
   <% end %>
 
-  <h3 class="small-title">Session Settings: Ask a Question, Live Polls</h3>
+  <h3 class="small-title">Manage Lives Polls & Questions by Session</h3>
 
   <% @sessions.each do |session| %>
     <div class="list-card">
@@ -23,20 +23,29 @@
       </p>
 
       <div class="button-container">
+        <div class="blue button button-half-width">
+          <span class="">Live Poll</span>
+        </div>
+        <div class="blue button button-half-width">
+          <span class="">Ask a Question</span>
+        </div>
+      </div>
+
+      <div class="button-container">
         <% if session["allow_ask_a_question"] == true %>
+          <p class="detail-text">Ask a Question is: enabled</p>
           <%= button_to "Disable Questions", question_disable_organization_event_session_detail_path(id: session["id"]), method: :post, params: { event_id: session["event_id"] }, class: "blue button list-options" %>
           <br>
           <%= link_to "Moderate", "#{session["question_moderation_link"]}", class: "blue button list-options", target: :_blank %>
         <% elsif session["allow_ask_a_question"] == false %>
+          <p class="detail-text">Ask a Question is: disabled</p>
           <%= button_to "Enable Questions", question_enable_organization_event_session_detail_path(id: session["id"]), method: :post, params: { event_id: session["event_id"] }, class: "green button list-options" %>
         <% end %>
       </div>
 
-      <div class="button-container">
-        <p class="detail-text">
-          Questions Received:
-        </p>
-      </div>
+      <p class="detail-text">
+        Questions Received:
+      </p>
 
       <hr>
 
