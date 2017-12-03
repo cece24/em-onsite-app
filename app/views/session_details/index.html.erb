@@ -22,42 +22,63 @@
         <span><%= session["start_time"] %> - <%= session["end_time"] %></span>
       </p>
 
-      <div class="button-container">
-        <div class="blue button button-half-width">
-          <span class="">Live Poll</span>
+      <div class="manage-container">
+
+        <div class="button-container">
+          <div class="blue button button-half-width live-poll-button">
+            <span class="">Live Poll</span>
+          </div>
+          <div class="blue button button-half-width ask-a-question-button">
+            <span class="">Ask a Question</span>
+          </div>
         </div>
-        <div class="blue button button-half-width">
-          <span class="">Ask a Question</span>
+
+
+        <div class="question-container">
+          <hr>
+          <div class="button-container">
+            <% if session["allow_ask_a_question"] == true %>
+              <p class="detail-text">
+                <span>Ask a Question is: <span class="feature-status-text enabled-text">enabled</span></span>
+                &nbsp; | &nbsp;
+                <span>Questions Received: 6</span>
+              </p>
+
+              <%= button_to "Disable Questions", question_disable_organization_event_session_detail_path(id: session["id"]), method: :post, params: { event_id: session["event_id"] }, class: "blue button list-options" %>
+              <br>
+              <%= link_to "Moderate", "#{session["question_moderation_link"]}", class: "blue button list-options", target: :_blank %>
+            <% elsif session["allow_ask_a_question"] == false %>
+              <p class="detail-text">
+                <span>Ask a Question is: <span class="feature-status-text disabled-text">disabled</span></span>
+                &nbsp; | &nbsp;
+                <span>Questions Received: 6</span>
+              </p>
+
+              <%= button_to "Enable Questions", question_enable_organization_event_session_detail_path(id: session["id"]), method: :post, params: { event_id: session["event_id"] }, class: "green button list-options" %>
+              <br>
+                          <%= link_to "Moderate", "#{session["question_moderation_link"]}", class: "blue button list-options", target: :_blank %>
+            <% end %>
+          </div>
         </div>
+
+        <div class="poll-container">
+          <hr>
+          <div class="button-container">
+            <% if session["poll_payload"] %>
+              <% if session["poll_payload"]["visible"] == true %>
+                <%= button_to "Hide Live Polls", poll_hide_organization_event_session_detail_path(id: session["id"]), method: :post, params: { event_id: session["event_id"], poll_payload: session["poll_payload"].to_json }, class: "blue button list-options" %>
+              <% elsif session["poll_payload"]["visible"] == false %>
+                <%= button_to "Show Live Polls", poll_show_organization_event_session_detail_path(id: session["id"]), method: :post, params: { event_id: session["event_id"], poll_payload: session["poll_payload"].to_json }, class: "green button list-options" %>
+              <% end %>
+
+            <% else %>
+              <p class="detail-text">There are currently no live polls created for this session.</p>
+            <% end %>
+          </div>
+        </div>
+
       </div>
 
-      <div class="button-container">
-        <% if session["allow_ask_a_question"] == true %>
-          <p class="detail-text">Ask a Question is: enabled</p>
-          <%= button_to "Disable Questions", question_disable_organization_event_session_detail_path(id: session["id"]), method: :post, params: { event_id: session["event_id"] }, class: "blue button list-options" %>
-          <br>
-          <%= link_to "Moderate", "#{session["question_moderation_link"]}", class: "blue button list-options", target: :_blank %>
-        <% elsif session["allow_ask_a_question"] == false %>
-          <p class="detail-text">Ask a Question is: disabled</p>
-          <%= button_to "Enable Questions", question_enable_organization_event_session_detail_path(id: session["id"]), method: :post, params: { event_id: session["event_id"] }, class: "green button list-options" %>
-        <% end %>
-      </div>
-
-      <p class="detail-text">
-        Questions Received:
-      </p>
-
-      <hr>
-
-      <div class="button-container">
-        <% if session["poll_payload"] %>
-          <% if session["poll_payload"]["visible"] == true %>
-            <%= button_to "Hide Live Polls", poll_hide_organization_event_session_detail_path(id: session["id"]), method: :post, params: { event_id: session["event_id"], poll_payload: session["poll_payload"].to_json }, class: "blue button list-options" %>
-          <% elsif session["poll_payload"]["visible"] == false %>
-            <%= button_to "Show Live Polls", poll_show_organization_event_session_detail_path(id: session["id"]), method: :post, params: { event_id: session["event_id"], poll_payload: session["poll_payload"].to_json }, class: "green button list-options" %>
-          <% end %>
-        <% end %>
-      </div>
     </div>
   <% end %>
 

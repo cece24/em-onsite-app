@@ -84,6 +84,22 @@
   text-align: center;
 }
 
+.feature-status-text {
+  display: inline-block;
+  padding: 3px 12px 3px 12px;
+  border-radius: 20px;
+}
+
+.enabled-text {
+  background-color: #92d1a3;
+  color: #fff;
+}
+
+.disabled-text {
+  background-color: #A9A9A9;
+  color: #fff;
+}
+
 h3.event-title {
   font-size: 1.6rem;
   font-weight: 300;
@@ -284,7 +300,7 @@ input[type="checkbox"] {
   width: 100%;
   padding: 11px 30px;
   font-size: 1.0rem;
-  border-radius: 9px;
+  border-radius: 20px;
 }
 
 .blue {
@@ -363,6 +379,12 @@ i.fa-question {
   border-radius: 5px;
   padding: 0px 15px 10px 15px;
   margin-bottom: 10px
+}
+
+/* Session Details - Live Polls & Ask a Question */
+
+.question-container, .poll-container {
+  display: none;
 }
 
 /* Contact Support Modal */
