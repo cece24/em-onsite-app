@@ -52,8 +52,8 @@
           <div class="button-container">
             <% if session["allow_ask_a_question"] == true %>
               <p class="detail-text">
-                <span>Ask a Question is: <span class="feature-status-text enabled-text">enabled</span></span>
-                &nbsp; | &nbsp;
+                <!-- <span>Ask a Question is: <span class="feature-status-text enabled-text">enabled</span></span>
+                &nbsp; | &nbsp; -->
                 <span>Questions Received: #</span>
               </p>
 
@@ -62,8 +62,8 @@
               <%= link_to "Moderate", "#{session["question_moderation_link"]}", class: "blue button list-options", target: :_blank %>
             <% elsif session["allow_ask_a_question"] == false %>
               <p class="detail-text">
-                <span>Ask a Question is: <span class="feature-status-text disabled-text">disabled</span></span>
-                &nbsp; | &nbsp;
+                <!-- <span>Ask a Question is: <span class="feature-status-text disabled-text">disabled</span></span>
+                &nbsp; | &nbsp; -->
                 <span>Questions Received: #</span>
               </p>
 
@@ -80,16 +80,16 @@
             <% if session["poll_payload"] %>
               <% if session["poll_payload"]["visible"] == true %>
                 <p class="detail-text">
-                  <span>Live Polling is: <span class="feature-status-text enabled-text">enabled</span></span>
-                  &nbsp; | &nbsp;
+                  <!-- <span>Live Polling is: <span class="feature-status-text enabled-text">enabled</span></span>
+                  &nbsp; | &nbsp; -->
                   <span>Responses Received: #</span>
                 </p>
 
                 <%= button_to "Hide Live Polls", poll_hide_organization_event_session_detail_path(id: session["id"]), method: :post, params: { event_id: session["event_id"], poll_payload: session["poll_payload"].to_json }, class: "blue button list-options" %>
               <% elsif session["poll_payload"]["visible"] == false %>
                 <p class="detail-text">
-                  <span>Live Polling is: <span class="feature-status-text disabled-text">disabled</span></span>
-                  &nbsp; | &nbsp;
+                  <!-- <span>Live Polling is: <span class="feature-status-text disabled-text">disabled</span></span>
+                  &nbsp; | &nbsp; -->
                   <span>Responses Received: #</span>
                 </p>
                 <%= button_to "Show Live Polls", poll_show_organization_event_session_detail_path(id: session["id"]), method: :post, params: { event_id: session["event_id"], poll_payload: session["poll_payload"].to_json }, class: "green button list-options" %>
