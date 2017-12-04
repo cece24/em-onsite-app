@@ -1,19 +1,39 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // var manageContainers = document.querySelectorAll('.manage-container');
   var livePollButtons = document.querySelectorAll('.live-poll-button');
   var questionButtons = document.querySelectorAll('.ask-a-question-button');
-  var livePollContainers = document.querySelectorAll('.poll-container');
+  var pollContainers = document.querySelectorAll('.poll-container');
   var questionContainers = document.querySelectorAll('.question-container');
+
+  for (var i = 0; i < pollContainers.length; i++) {
+    pollContainers[i].style.display = "none";
+    questionContainers[i].style.display = "none";
+  }
 
   for (var i = 0; i < livePollButtons.length; i++ ) {
     livePollButtons[i].addEventListener('click', function(e) {
-      livePollContainers[i].style.display = "unset";
+      console.log('click');
+      var sessionClass = this.classList[0];
+      var pollContainer = $('.poll-container.' + sessionClass);
+
+      if (pollContainer[0].style.display == "none") {
+        pollContainer[0].style.display = "block";
+      } else {
+        pollContainer[0].style.display = "none";
+      }
     })
   }
 
   for (var i = 0; i < questionButtons.length; i++ ) {
     questionButtons[i].addEventListener('click', function(e) {
-      questionContainers[i].style.display = "unset";
+      console.log('click');
+      var sessionClass = this.classList[0];
+      var questionContainer = $('.question-container.' + sessionClass);
+
+      if (questionContainer[0].style.display == "none") {
+        questionContainer[0].style.display = "block";
+      } else {
+        questionContainer[0].style.display = "none";
+      }
     })
   }
 

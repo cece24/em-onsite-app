@@ -5,7 +5,7 @@
     <% end %>
   <% end %>
 
-  <h3 class="small-title">Manage Lives Polls & Questions by Session</h3>
+  <h3 class="small-title">Manage Live Polls & Questions by Session</h3>
 
   <% @sessions.each do |session| %>
     <div class="list-card">
@@ -25,23 +25,23 @@
       <div class="manage-container">
 
         <div class="button-container">
-          <div class="blue button button-half-width live-poll-button">
+          <div class="<%= "#{session["id"]}" %> blue button button-half-width live-poll-button">
             <span class="">Live Poll</span>
           </div>
-          <div class="blue button button-half-width ask-a-question-button">
+          <div class="<%= "#{session["id"]}" %> blue button button-half-width ask-a-question-button">
             <span class="">Ask a Question</span>
           </div>
         </div>
 
 
-        <div class="question-container">
+        <div class="<%= "#{session["id"]}" %> question-container">
           <hr>
           <div class="button-container">
             <% if session["allow_ask_a_question"] == true %>
               <p class="detail-text">
                 <span>Ask a Question is: <span class="feature-status-text enabled-text">enabled</span></span>
                 &nbsp; | &nbsp;
-                <span>Questions Received: 6</span>
+                <span>Questions Received: #</span>
               </p>
 
               <%= button_to "Disable Questions", question_disable_organization_event_session_detail_path(id: session["id"]), method: :post, params: { event_id: session["event_id"] }, class: "blue button list-options" %>
@@ -61,7 +61,7 @@
           </div>
         </div>
 
-        <div class="poll-container">
+        <div class="<%= "#{session["id"]}" %> poll-container">
           <hr>
           <div class="button-container">
             <% if session["poll_payload"] %>
