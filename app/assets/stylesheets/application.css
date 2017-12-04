@@ -124,6 +124,7 @@ h3.event-title {
   /* grey #535b6a */
   /*border-bottom: 1px solid #e8e8e8;*/
   box-shadow: 0 2px 6px 0 rgba(0,0,0,0.17);
+  z-index: 1;
 }
 
 .small-logo-container {
@@ -298,7 +299,8 @@ input[type="checkbox"] {
 
 .list-options {
   width: 100%;
-  padding: 11px 30px;
+  padding: 8px 30px;
+  margin-bottom: 5px;
   font-size: 1.0rem;
   border-radius: 20px;
 }
@@ -315,6 +317,22 @@ input[type="checkbox"] {
   color: red;
 }
 
+.live-poll-button, .ask-a-question-button {
+  position: relative;
+  width: 100%;
+  text-align: left;
+}
+
+.button-flag {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  padding: 8px;
+  border-radius: 0 20px 20px 0;
+  display: inline-block;
+  width: 30%;
+  text-align: center;
+}
 
 /* Lists */
 
